@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TEXNOID — High-Scale Digital Product Studio & Engineering Agency</title>
+  <meta name="description" content="TEXNOID is an elite digital product studio engineering resilient web applications, headless Shopify commerce, cross-platform mobile apps, and enterprise SaaS systems." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background Technical Grid Overlay -->
+  <div class="tech-grid-background" aria-hidden="true"></div>
+  <div class="radial-spotlight" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <a href="#" class="brand-logo" aria-label="TEXNOID Homepage">
+        <div class="logo-glyph">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8L12 3L20 8V16L12 21L4 16V8Z" stroke="#FF334B" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M12 3V12M12 12L20 16M12 12L4 16" stroke="#FF334B" stroke-width="1.5" stroke-opacity="0.7"/>
+            <circle cx="12" cy="12" r="2.5" fill="#FF334B"/>
+          </svg>
+        </div>
+        <span class="brand-name">TEXNOID<span class="brand-mark">®</span></span>
+      </a>
+
+      <!-- Center Links -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#capabilities" class="nav-link">Capabilities</a>
+        <a href="#retainers" class="nav-link">Retainers</a>
+        <a href="#proof" class="nav-link">Client Proof</a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="link-discovery">
+          <span>Schedule Discovery</span>
+          <i data-lucide="arrow-up-right" class="icon-sm"></i>
+        </a>
+        <a href="#retainers" class="btn-primary">
+          <span>Start a Project</span>
+          <i data-lucide="chevron-right" class="icon-sm"></i>
+        </a>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu" aria-expanded="false">
+          <i data-lucide="menu" id="menuIcon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="drawer-content">
+        <a href="#work" class="drawer-link">Work</a>
+        <a href="#capabilities" class="drawer-link">Capabilities</a>
+        <a href="#retainers" class="drawer-link">Retainers</a>
+        <a href="#proof" class="drawer-link">Client Proof</a>
+        <div class="drawer-actions">
+          <a href="#retainers" class="btn-primary w-full">Start a Project</a>
+          <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full">Schedule Discovery</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Column -->
+          <div class="hero-content" data-reveal>
+            <div class="tagline-pill">
+              <span class="pulse-indicator"></span>
+              <span class="pill-text">HIGH-SCALE DIGITAL PRODUCT STUDIO</span>
+            </div>
+
+            <h1 class="hero-title">
+              We Don't Just Design. <br />
+              <span class="text-gradient">We Develop.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              From high-conversion commerce architectures to scalable web & mobile ecosystems, we engineer resilient digital products that scale enterprise revenue.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#retainers" class="btn-primary btn-lg">
+                <span>Book Technical Discovery</span>
+                <i data-lucide="arrow-right" class="btn-icon"></i>
+              </a>
+              <a href="#work" class="btn-ghost btn-lg">
+                <span>Explore Deliveries</span>
+                <i data-lucide="arrow-down" class="btn-icon"></i>
+              </a>
+            </div>
+
+
+          </div>
+
+          <!-- Hero Visual: 3D Telemetry Card -->
+          <div class="hero-visual" data-reveal data-reveal-delay="200">
+            <div class="telemetry-card-wrapper" id="heroCardWrapper">
+              <div class="telemetry-card" id="heroCard">
+                <div class="card-glass-shine"></div>
+                
+                <!-- Terminal Header -->
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                  </div>
+                  <div class="terminal-title">
+                    <i data-lucide="terminal" class="icon-xs"></i>
+                    <span>texnoid.engine.telemetry.v4.ts</span>
+                  </div>
+                  <div class="terminal-badge">LIVE NODE</div>
+                </div>
+
+                <!-- Telemetry Metrics Bar -->
+                <div class="telemetry-metrics-bar">
+                  <div class="t-metric">
+                    <span class="t-label">LIGHTHOUSE</span>
+                    <span class="t-value text-green">99 / 100</span>
+                  </div>
+                  <div class="t-metric">
+                    <span class="t-label">CACHE HIT RATE</span>
+                    <span class="t-value text-crimson">99.4%</span>
+                  </div>
+                  <div class="t-metric">
+                    <span class="t-label">TTFB</span>
+                    <span class="t-value text-blue">&lt; 14ms</span>
+                  </div>
+                </div>
+
+                <!-- Terminal Code Window -->
+                <div class="terminal-body">
+                  <pre><code><span class="token-keyword">import</span> { <span class="token-function">TexnoidPipeline</span>, <span class="token-type">RedisCache</span> } <span class="token-keyword">from</span> <span class="token-string">'@texnoid/core'</span>;
+
+<span class="token-comment">// High-Concurrency Checkout Pipeline</span>
+<span class="token-keyword">export async function</span> <span class="token-function">processOrder</span>(order: <span class="token-type">OrderPayload</span>) {
+  <span class="token-keyword">const</span> session = <span class="token-keyword">await</span> <span class="token-function">TexnoidPipeline</span>.<span class="token-function">init</span>({
+    edgeRouting: <span class="token-boolean">true</span>,
+    cacheStrategy: <span class="token-string">'STALE_WHILE_REVALIDATE'</span>,
+    latencyTargetMs: <span class="token-number">12</span>
+  });
+
+  <span class="token-keyword">return await</span> session.<span class="token-function">executeOrderSync</span>(order);
+}</code></pre>
+                </div>
+
+                <!-- Floating Badges -->
+                <div class="floating-badge badge-top-right">
+                  <i data-lucide="zap" class="icon-xs text-crimson"></i>
+                  <span>3.4x CRO ACCELERATION</span>
+                </div>
+
+                <div class="floating-badge badge-bottom-left">
+                  <i data-lucide="shield-check" class="icon-xs text-green"></i>
+                  <span>ZERO TECHNICAL DEBT</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PORTFOLIO SHOWCASE ("Our Engineering Legacy") -->
+    <section class="portfolio-section" id="work">
+      <div class="container">
+        
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span>SELECTED WORKS</span>
+            <span class="eyebrow-line"></span>
+          </div>
+          <h2 class="section-title">Our Engineering Legacy</h2>
+          <p class="section-subtitle">
+            A showcase of complex builds, high-conversion designs, and mission-critical architectures.
+          </p>
+        </div>
+
+        <!-- 6 Portfolio Cards Grid -->
+        <div class="portfolio-grid">
+          
+          <!-- Project 1: Niha -->
+          <article class="portfolio-card" data-tilt data-reveal>
+            <div class="card-shine"></div>
+            <div class="card-chrome">
+              <div class="chrome-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="chrome-url">niha.com — Next.js + Shopify Plus</span>
+              <a href="#" class="chrome-btn" aria-label="View Niha Case Study">
+                <i data-lucide="external-link" class="icon-xs"></i>
+              </a>
+            </div>
+            <div class="card-visual">
+              <div class="visual-mockup bg-niha">
+
+                <div class="mockup-content">
+                  <div class="mock-title">NIHA FASHION</div>
+                  <div class="mock-desc">Enterprise Apparel & High-Load Storefront</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-details">
+              <div class="tags-row">
+                <span class="tech-tag">Next.js 14</span>
+                <span class="tech-tag">Shopify Plus</span>
+                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">TailwindCSS</span>
+              </div>
+              <h3 class="card-project-title">Niha Enterprise Storefront</h3>
+              <p class="card-project-desc">
+                Engineered a headless luxury fashion storefront with sub-second page transitions, instant checkout flows, and automated inventory sync.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 2: Bathurchoice -->
+          <article class="portfolio-card" data-tilt data-reveal data-reveal-delay="100">
+            <div class="card-shine"></div>
+            <div class="card-chrome">
+              <div class="chrome-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="chrome-url">bathurchoice.com — Headless Commerce</span>
+              <a href="#" class="chrome-btn" aria-label="View Bathurchoice Case Study">
+                <i data-lucide="external-link" class="icon-xs"></i>
+              </a>
+            </div>
+            <div class="card-visual">
+              <div class="visual-mockup bg-bathur">
+
+                <div class="mockup-content">
+                  <div class="mock-title">BATHURCHOICE</div>
+                  <div class="mock-desc">Luxury Home & Architectural Commerce</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-details">
+              <div class="tags-row">
+                <span class="tech-tag">Headless Shopify</span>
+                <span class="tech-tag">Framer Motion</span>
+                <span class="tech-tag">Liquid</span>
+                <span class="tech-tag">Algolia</span>
+              </div>
+              <h3 class="card-project-title">Bathurchoice Architectural Platform</h3>
+              <p class="card-project-desc">
+                High-performance e-commerce platform built for high-ticket home architectural products with custom product configurators.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 3: Goldenkey Hyderabad -->
+          <article class="portfolio-card" data-tilt data-reveal data-reveal-delay="200">
+            <div class="card-shine"></div>
+            <div class="card-chrome">
+              <div class="chrome-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="chrome-url">goldenkeyhyderabad.com — SaaS Portal</span>
+              <a href="#" class="chrome-btn" aria-label="View Goldenkey Case Study">
+                <i data-lucide="external-link" class="icon-xs"></i>
+              </a>
+            </div>
+            <div class="card-visual">
+              <div class="visual-mockup bg-goldenkey">
+
+                <div class="mockup-content">
+                  <div class="mock-title">GOLDENKEY</div>
+                  <div class="mock-desc">Real Estate SaaS & Property Ecosystem</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-details">
+              <div class="tags-row">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">AWS CloudFront</span>
+              </div>
+              <h3 class="card-project-title">Goldenkey Real Estate Ecosystem</h3>
+              <p class="card-project-desc">
+                Scalable real estate portal featuring interactive 3D floorplan viewports, instant lead routing, and cloud document verification.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 4: Garage91 -->
+          <article class="portfolio-card" data-tilt data-reveal>
+            <div class="card-shine"></div>
+            <div class="card-chrome">
+              <div class="chrome-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="chrome-url">garage91.in — Automotive Engineering</span>
+              <a href="#" class="chrome-btn" aria-label="View Garage91 Case Study">
+                <i data-lucide="external-link" class="icon-xs"></i>
+              </a>
+            </div>
+            <div class="card-visual">
+              <div class="visual-mockup bg-garage">
+
+                <div class="mockup-content">
+                  <div class="mock-title">GARAGE91</div>
+                  <div class="mock-desc">Performance Automotive Configurator</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-details">
+              <div class="tags-row">
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Shopify API</span>
+                <span class="tech-tag">Redis</span>
+              </div>
+              <h3 class="card-project-title">Garage91 Automotive Commerce</h3>
+              <p class="card-project-desc">
+                Bespoke 3D auto parts visualizer and mobile-first parts catalog with automated fitment verification lookup algorithms.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 5: Troove -->
+          <article class="portfolio-card" data-tilt data-reveal data-reveal-delay="100">
+            <div class="card-shine"></div>
+            <div class="card-chrome">
+              <div class="chrome-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="chrome-url">troove.co — D2C Subscription</span>
+              <a href="#" class="chrome-btn" aria-label="View Troove Case Study">
+                <i data-lucide="external-link" class="icon-xs"></i>
+              </a>
+            </div>
+            <div class="card-visual">
+              <div class="visual-mockup bg-troove">
+
+                <div class="mockup-content">
+                  <div class="mock-title">TROOVE</div>
+                  <div class="mock-desc">Direct-to-Consumer Beauty Brand</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-details">
+              <div class="tags-row">
+                <span class="tech-tag">Next.js 14</span>
+                <span class="tech-tag">Recharge API</span>
+                <span class="tech-tag">Stripe</span>
+                <span class="tech-tag">Tailwind</span>
+              </div>
+              <h3 class="card-project-title">Troove Subscription Platform</h3>
+              <p class="card-project-desc">
+                Subscription commerce architecture with automated recurring billing, customer portal management, and custom bundling logic.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 6: 420Store -->
+          <article class="portfolio-card" data-tilt data-reveal data-reveal-delay="200">
+            <div class="card-shine"></div>
+            <div class="card-chrome">
+              <div class="chrome-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="chrome-url">420store.in — High-Scale Streetwear</span>
+              <a href="#" class="chrome-btn" aria-label="View 420Store Case Study">
+                <i data-lucide="external-link" class="icon-xs"></i>
+              </a>
+            </div>
+            <div class="card-visual">
+              <div class="visual-mockup bg-420">
+
+                <div class="mockup-content">
+                  <div class="mock-title">420STORE</div>
+                  <div class="mock-desc">High-Velocity Streetwear Storefront</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-details">
+              <div class="tags-row">
+                <span class="tech-tag">Liquid Custom</span>
+                <span class="tech-tag">Remix</span>
+                <span class="tech-tag">Sanity CMS</span>
+                <span class="tech-tag">Klaviyo</span>
+              </div>
+              <h3 class="card-project-title">420Store Streetwear E-Commerce</h3>
+              <p class="card-project-desc">
+                Custom streetwear store engineered to withstand viral drop spikes with zero downtime and automated queue management.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CAPABILITIES & SERVICES ("Our Services") -->
+    <section class="capabilities-section" id="capabilities">
+      <div class="container">
+        
+        <div class="section-header" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span>CAPABILITIES</span>
+          </div>
+          <h2 class="section-title">We Don't Just Provide a Service; <br />We Guide an Engineering Process.</h2>
+          <p class="section-subtitle">
+            Our multidisciplinary team ensures your digital footprint is engineered for extreme performance, security, and measurable business advantage.
+          </p>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="bento-grid">
+          
+          <!-- Bento Pillar 1 (Wide Span 2) -->
+          <div class="bento-card bento-span-2" data-reveal>
+            <div class="bento-icon-wrapper">
+              <i data-lucide="code-2" class="bento-icon"></i>
+            </div>
+            <div class="bento-content">
+              <span class="pillar-number">PILLAR 01</span>
+              <h3 class="bento-title">Full-Stack Engineering</h3>
+              <p class="bento-desc">
+                Custom web applications engineered with modern JavaScript frameworks, distributed microservices, and edge computing for ultra-low latency.
+              </p>
+              <div class="bento-tags">
+                <span>React</span>
+                <span>Next.js</span>
+                <span>Node.js</span>
+                <span>Distributed Microservices</span>
+                <span>Docker</span>
+                <span>Serverless</span>
+              </div>
+            </div>
+            <div class="bento-graphic graphic-code">
+              <div class="mini-terminal">
+                <span class="term-line"><span class="c-blue">const</span> api = <span class="c-pink">await</span> Texnoid.<span class="c-yellow">scale</span>();</span>
+                <span class="term-line"><span class="c-green">✓ HTTP/3 200 OK [12ms]</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Pillar 2 -->
+          <div class="bento-card" data-reveal data-reveal-delay="100">
+            <div class="bento-icon-wrapper">
+              <i data-lucide="shopping-bag" class="bento-icon"></i>
+            </div>
+            <div class="bento-content">
+              <span class="pillar-number">PILLAR 02</span>
+              <h3 class="bento-title">Shopify Plus & Headless Commerce</h3>
+              <p class="bento-desc">
+                High-load store architectures, custom Liquid development, Hydrogen headless builds, and custom checkout extensions designed for high conversion.
+              </p>
+              <div class="bento-tags">
+                <span>Shopify Plus</span>
+                <span>Custom Liquid</span>
+                <span>Hydrogen</span>
+                <span>Checkout Extensions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Pillar 3 -->
+          <div class="bento-card" data-reveal>
+            <div class="bento-icon-wrapper">
+              <i data-lucide="smartphone" class="bento-icon"></i>
+            </div>
+            <div class="bento-content">
+              <span class="pillar-number">PILLAR 03</span>
+              <h3 class="bento-title">Native & Cross-Platform Mobile Apps</h3>
+              <p class="bento-desc">
+                Performant mobile experiences built with React Native and native iOS/Android tooling featuring offline sync and low-latency API layers.
+              </p>
+              <div class="bento-tags">
+                <span>React Native</span>
+                <span>iOS / Android</span>
+                <span>Offline-First DB</span>
+                <span>Low-Latency Sync</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Pillar 4 (Wide Span 2) -->
+          <div class="bento-card bento-span-2" data-reveal data-reveal-delay="100">
+            <div class="bento-icon-wrapper">
+              <i data-lucide="layers" class="bento-icon"></i>
+            </div>
+            <div class="bento-content">
+              <span class="pillar-number">PILLAR 04</span>
+              <h3 class="bento-title">Enterprise SaaS & UI/UX Design Systems</h3>
+              <p class="bento-desc">
+                Bespoke design systems, database modeling, cloud APIs, and component libraries that ensure pixel-perfect fidelity and seamless product scaling.
+              </p>
+              <div class="bento-tags">
+                <span>Design Systems</span>
+                <span>Figma Tokens</span>
+                <span>Database Architecture</span>
+                <span>REST / GraphQL</span>
+                <span>Cloud APIs</span>
+              </div>
+            </div>
+            <div class="bento-graphic graphic-design">
+              <div class="design-preview-box">
+                <span class="box-dot"></span>
+                <span class="box-label">DESIGN SYSTEM v2.4 ACTIVATED</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. PRICING & RETAINERS ("Expert Shopify Maintenance") -->
+    <section class="pricing-section" id="retainers">
+      <div class="container">
+        
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span>RETAINER SOLUTIONS</span>
+            <span class="eyebrow-line"></span>
+          </div>
+          <h2 class="section-title">Expert Shopify Maintenance</h2>
+          <p class="section-subtitle">
+            Don't let technical debt slow down your sales. Dedicated engineering hours for performance, speed, and continuous SLA stability.
+          </p>
+        </div>
+
+        <!-- 3 Tier Pricing Cards Grid -->
+        <div class="pricing-grid">
+          
+          <!-- Tier 1: Starter Support -->
+          <div class="pricing-card" data-reveal>
+            <div class="pricing-header">
+              <div class="plan-badge">STARTER</div>
+              <h3 class="plan-name">Starter Support</h3>
+              <p class="plan-summary">Ideal for growing Shopify stores needing consistent monthly maintenance and immediate bug response.</p>
+              <div class="plan-price">
+                <span class="currency">₹</span><span class="amount">5,999</span><span class="period">/ month</span>
+              </div>
+            </div>
+
+            <div class="plan-features">
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span><strong>10 Dedicated Hours</strong> / month</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Immediate Bug & Layout Fixes</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Custom Liquid Theme Tweaks</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Security & App Conflict Audits</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Standard Email Support (24h SLA)</span>
+              </div>
+            </div>
+
+            <div class="pricing-footer">
+              <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-ghost w-full">Select Starter Plan</a>
+            </div>
+          </div>
+
+          <!-- Tier 2: Business Growth (HIGHLIGHTED CARD) -->
+          <div class="pricing-card card-featured" data-reveal data-reveal-delay="100">
+            <div class="featured-glow-border"></div>
+            <div class="popular-ribbon">
+              <i data-lucide="sparkles" class="icon-xs"></i>
+              <span>RECOMMENDED FOR GROWTH</span>
+            </div>
+
+            <div class="pricing-header">
+              <div class="plan-badge badge-crimson">BUSINESS GROWTH</div>
+              <h3 class="plan-name">Business Growth</h3>
+              <p class="plan-summary">Engineered for high-volume stores needing proactive conversion optimization and speed tuning.</p>
+              <div class="plan-price">
+                <span class="currency">₹</span><span class="amount">11,999</span><span class="period">/ month</span>
+              </div>
+            </div>
+
+            <div class="plan-features">
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <span><strong>20 Dedicated Hours</strong> / month</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <span>Lighthouse 95+ Speed Tuning</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <span>Advanced Custom App Logic</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <span>A/B CRO Experiment Setup</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <span>Priority Engineer Access (4h SLA)</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <span>Monthly Architecture Review</span>
+              </div>
+            </div>
+
+            <div class="pricing-footer">
+              <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-primary w-full">
+                <span>Lock In Business Growth</span>
+                <i data-lucide="arrow-right" class="icon-sm"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tier 3: Enterprise Prime -->
+          <div class="pricing-card" data-reveal data-reveal-delay="200">
+            <div class="pricing-header">
+              <div class="plan-badge">ENTERPRISE</div>
+              <h3 class="plan-name">Enterprise Prime</h3>
+              <p class="plan-summary">Full-spectrum technical partnership for multi-million dollar brands requiring custom integrations.</p>
+              <div class="plan-price">
+                <span class="currency">₹</span><span class="amount">19,999</span><span class="period">/ month</span>
+              </div>
+            </div>
+
+            <div class="plan-features">
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span><strong>35 Dedicated Hours</strong> / month</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Custom Private App Logic & Middleware</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>ERP, CRM & Warehouse Integration</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>24/7 Weekend & Flash Sale Coverage</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Dedicated Lead Developer Allocation</span>
+              </div>
+              <div class="feature-item">
+                <i data-lucide="check" class="icon-check"></i>
+                <span>Private Slack Channel Access</span>
+              </div>
+            </div>
+
+            <div class="pricing-footer">
+              <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-ghost w-full">Contact Enterprise Team</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. CLIENT SOCIAL PROOF & FEEDBACK -->
+    <section class="testimonials-section" id="proof">
+      <div class="container">
+        
+        <div class="section-header text-center" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span>PROVEN IMPACT</span>
+            <span class="eyebrow-line"></span>
+          </div>
+          <h2 class="section-title">What Engineering Partners Say</h2>
+          <p class="section-subtitle">
+            Measurable results, zero downtime, and engineering excellence delivered across every engagement.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <!-- Card 1 -->
+          <div class="testimonial-card" data-reveal>
+            <div class="rating-stars">
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+            </div>
+            <p class="testimonial-quote">
+              "TEXNOID completely transformed our Shopify Plus store. Our mobile page load speed dropped from 4.2s to 0.6s, leading directly to a 42% spike in checkout completions during our Black Friday drop."
+            </p>
+            <div class="client-meta">
+              <div class="client-avatar">
+                <span>R</span>
+              </div>
+              <div class="client-info">
+                <span class="client-name">Rohit Sharma</span>
+                <span class="client-title">CTO, Niha Fashion Group</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card" data-reveal data-reveal-delay="100">
+            <div class="rating-stars">
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Working with Texnoid is like having a top 1% Silicon Valley engineering team on speed dial. They refactored our SaaS platform backend and eliminated all database bottlenecks before our Series A."
+            </p>
+            <div class="client-meta">
+              <div class="client-avatar">
+                <span>A</span>
+              </div>
+              <div class="client-info">
+                <span class="client-name">Ananya Reddy</span>
+                <span class="client-title">Head of Digital, Goldenkey</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card" data-reveal data-reveal-delay="200">
+            <div class="rating-stars">
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+              <i data-lucide="star" class="star-icon"></i>
+            </div>
+            <p class="testimonial-quote">
+              "Their Monthly Shopify Retainer paid for itself within week two. The immediate bug resolution and checkout customization added millions in annual ARR to our subscription line."
+            </p>
+            <div class="client-meta">
+              <div class="client-avatar">
+                <span>V</span>
+              </div>
+              <div class="client-info">
+                <span class="client-name">Vikram Malhotra</span>
+                <span class="client-title">Founder, Troove Beauty</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 6. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="brand-logo footer-logo">
+            <div class="logo-glyph">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 8L12 3L20 8V16L12 21L4 16V8Z" stroke="#FF334B" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M12 3V12M12 12L20 16M12 12L4 16" stroke="#FF334B" stroke-width="1.5" stroke-opacity="0.7"/>
+                <circle cx="12" cy="12" r="2.5" fill="#FF334B"/>
+              </svg>
+            </div>
+            <span class="brand-name">TEXNOID<span class="brand-mark">®</span></span>
+          </div>
+          <p class="footer-tagline">
+            Bespoke engineering studio building high-performance web products, scalable e-commerce, and enterprise applications.
+          </p>
+          
+          <!-- System Status Pill -->
+          <div class="system-status-pill">
+            <span class="status-dot"></span>
+            <span>All Systems Operational 🟢</span>
+          </div>
+        </div>
+
+        <div class="footer-nav-grid">
+          <div class="footer-col">
+            <span class="footer-col-title">Capabilities</span>
+            <a href="#capabilities">Full-Stack Engineering</a>
+            <a href="#capabilities">Shopify Plus & Headless</a>
+            <a href="#capabilities">Mobile Native Apps</a>
+            <a href="#capabilities">UI/UX Systems</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Selected Works</span>
+            <a href="#work">Niha Fashion</a>
+            <a href="#work">Bathurchoice</a>
+            <a href="#work">Goldenkey</a>
+            <a href="#work">Garage91</a>
+            <a href="#work">Troove</a>
+            <a href="#work">420Store</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">SLA Retainers</span>
+            <a href="#retainers">Starter Support</a>
+            <a href="#retainers">Business Growth</a>
+            <a href="#retainers">Enterprise Prime</a>
+            <a href="#retainers">Custom SLA Agreement</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Connect</span>
+            <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a>
+            <a href="mailto:hello@texnoid.com">hello@texnoid.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giant Brand Watermark -->
+      <div class="footer-watermark" aria-hidden="true">
+        <span>TEXNOID</span>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">
+          © <span id="copyrightYear">2026</span> TEXNOID Digital Product Studio. All rights reserved.
+        </p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security Audit</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

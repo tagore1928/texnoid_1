@@ -1,0 +1,14 @@
+{
+  "name": "texnoid-agency",
+  "version": "1.0.0",
+  "description": "TEXNOID - High-Scale Digital Product Studio Homepage",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --port 3000 --host",
+    "start": "vite --port 3000 --host",
+    "preview": "vite preview --port 3000"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
