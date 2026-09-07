@@ -1,7 +1,7 @@
 /* ==========================================================================
    TEXNOID — BESPOKE AGENCY STYLESHEET
    Design System, CSS Variables, 3D Physics, Glassmorphism, Bento Grid
-   Fully Mobile Responsive & Production Hardened
+   Fully Mobile Responsive & Hardened Drawer Navigation
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -83,6 +83,11 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--bg-obsidian);
+}
+
+body.drawer-open {
+  overflow: hidden !important;
+  touch-action: none;
 }
 
 a {
@@ -258,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
 .icon-sm { width: 18px; height: 18px; flex-shrink: 0; }
 
 /* --------------------------------------------------------------------------
-   6. NAVBAR
+   6. NAVBAR & STACKING CONTEXT SAFE MOBILE DRAWER
    -------------------------------------------------------------------------- */
 .site-header {
   position: fixed;
@@ -270,6 +275,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all var(--transition-smooth);
   background: var(--bg-glass);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-glass);
 }
 
@@ -375,25 +381,29 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5rem;
   border-radius: 6px;
   border: 1px solid var(--border-glass);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.04);
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Mobile Drawer */
+/* Standalone Mobile Drawer (Outside Header to bypass CSS backdrop-filter stacking trap) */
 .mobile-drawer {
-  display: none;
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(11, 15, 23, 0.97);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  z-index: 999;
-  padding: calc(var(--nav-height) + 1.5rem) 1.5rem 2rem 1.5rem;
+  width: 100vw;
+  height: 100dvh;
+  background: #0B0F17;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.5rem 2.5rem 1.5rem;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: transform var(--transition-smooth), opacity var(--transition-smooth), visibility var(--transition-smooth);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.4s ease;
+  overflow-y: auto;
 }
 
 .mobile-drawer.active {
@@ -402,28 +412,64 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
 }
 
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 2rem;
+}
+
+.drawer-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .drawer-content {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  max-width: 480px;
-  margin: 0 auto;
+  justify-content: space-between;
+  flex: 1;
+  gap: 2rem;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 1.35rem;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
-  border-bottom: 1px solid var(--border-glass);
-  padding-bottom: 0.75rem;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.drawer-link:hover {
+  color: var(--accent-crimson);
+  padding-left: 0.5rem;
 }
 
 .drawer-actions {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: auto;
 }
 
 /* --------------------------------------------------------------------------
@@ -1358,16 +1404,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   14. ANIMATIONS & REVEAL STATES (Production Hardened Visibility)
+   14. ANIMATIONS & REVEAL STATES
    -------------------------------------------------------------------------- */
-/* Elements start visible by default so content is NEVER hidden if JS fails */
 [data-reveal] {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* When JS initializes, it adds js-loaded class to html, enabling scroll reveals */
 html.js-loaded [data-reveal]:not(.is-visible) {
   opacity: 0;
   transform: translateY(24px);
@@ -1379,8 +1423,17 @@ html.js-loaded [data-reveal].is-visible {
 }
 
 /* --------------------------------------------------------------------------
-   15. RESPONSIVE BREAKPOINTS (Mobile & Tablet Hardened)
+   15. RESPONSIVE BREAKPOINTS (Mobile & Desktop Fit)
    -------------------------------------------------------------------------- */
+@media (min-width: 769px) {
+  .mobile-toggle {
+    display: none !important;
+  }
+  .mobile-drawer {
+    display: none !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1420,17 +1473,11 @@ html.js-loaded [data-reveal].is-visible {
   .nav-menu, 
   .header-actions .link-discovery, 
   .header-actions .btn-primary {
-    display: none;
+    display: none !important;
   }
 
   .mobile-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mobile-drawer {
-    display: block;
+    display: inline-flex !important;
   }
 
   .hero-title {

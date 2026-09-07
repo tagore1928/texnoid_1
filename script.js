@@ -1,6 +1,6 @@
 /**
  * TEXNOID — BESPOKE AGENCY INTERACTION ENGINE
- * Robust, Production-Hardened Execution with Fail-Safe Visibility
+ * Mobile Navigation & High-Performance Viewport Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,46 +28,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // 3. Mobile Navigation Drawer Toggle & Icon Swap
+  // 3. Mobile Navigation Drawer Controls
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
   const mobileDrawer = document.getElementById('mobileDrawer');
   const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
 
-  if (mobileMenuBtn && mobileDrawer) {
-    mobileMenuBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-      const nextState = !isExpanded;
-      
-      mobileMenuBtn.setAttribute('aria-expanded', String(nextState));
-      mobileDrawer.classList.toggle('active', nextState);
-      document.body.style.overflow = nextState ? 'hidden' : '';
+  function openDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.add('active');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('drawer-open');
+  }
 
-      // Swap menu icon to X icon if lucide is available
-      const menuIcon = mobileMenuBtn.querySelector('[data-lucide], i');
-      if (menuIcon) {
-        menuIcon.setAttribute('data-lucide', nextState ? 'x' : 'menu');
-        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-          lucide.createIcons();
-        }
+  function closeDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.remove('active');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('drawer-open');
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (mobileDrawer && mobileDrawer.classList.contains('active')) {
+        closeDrawer();
+      } else {
+        openDrawer();
       }
     });
+  }
 
-    drawerLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        const menuIcon = mobileMenuBtn.querySelector('[data-lucide], i');
-        if (menuIcon) {
-          menuIcon.setAttribute('data-lucide', 'menu');
-          if (typeof lucide !== 'undefined' && lucide.createIcons) {
-            lucide.createIcons();
-          }
-        }
-      });
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeDrawer();
     });
   }
+
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeDrawer();
+    });
+  });
+
+  // Close drawer if user presses Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
 
   // 4. Fail-Safe Scroll-Triggered Reveal Observer
   const revealElements = document.querySelectorAll('[data-reveal]');
@@ -90,14 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
   } else {
-    // Fallback for browsers without IntersectionObserver support
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
-  // Safety Fallback: Guarantee all elements become visible after 400ms regardless of scroll state
+  // Safety Fallback: Guarantee all elements become visible after 350ms
   setTimeout(() => {
     revealElements.forEach(el => el.classList.add('is-visible'));
-  }, 400);
+  }, 350);
 
   // 5. 3D Perspective Mouse-Tilt Effect (Desktop Only)
   if (window.innerWidth > 768) {
@@ -111,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!card) return;
 
       const shine = card.querySelector('.card-shine, .card-glass-shine');
-      const maxTilt = 8; // degrees
+      const maxTilt = 8;
 
       cardWrapper.addEventListener('mousemove', (e) => {
         const rect = cardWrapper.getBoundingClientRect();
