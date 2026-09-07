@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>TEXNOID — High-Scale Digital Product Studio & Engineering Agency</title>
   <meta name="description" content="TEXNOID is an elite digital product studio engineering resilient web applications, headless Shopify commerce, cross-platform mobile apps, and enterprise SaaS systems." />
   
@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
   
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -29,7 +29,7 @@
       <!-- Logo -->
       <a href="#" class="brand-logo" aria-label="TEXNOID Homepage">
         <div class="logo-glyph">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 8L12 3L20 8V16L12 21L4 16V8Z" stroke="#FF334B" stroke-width="2" stroke-linejoin="round"/>
             <path d="M12 3V12M12 12L20 16M12 12L4 16" stroke="#FF334B" stroke-width="1.5" stroke-opacity="0.7"/>
             <circle cx="12" cy="12" r="2.5" fill="#FF334B"/>
@@ -50,14 +50,14 @@
       <div class="header-actions">
         <a href="https://calendly.com" target="_blank" rel="noopener" class="link-discovery">
           <span>Schedule Discovery</span>
-          <i data-lucide="arrow-up-right" class="icon-sm"></i>
+          <svg class="icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
         <a href="#retainers" class="btn-primary">
           <span>Start a Project</span>
-          <i data-lucide="chevron-right" class="icon-sm"></i>
+          <svg class="icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
         <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Menu" aria-expanded="false">
-          <i data-lucide="menu" id="menuIcon"></i>
+          <svg class="icon-sm" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
     </div>
@@ -102,14 +102,13 @@
             <div class="hero-cta-group">
               <a href="#retainers" class="btn-primary btn-lg">
                 <span>Book Technical Discovery</span>
-                <i data-lucide="arrow-right" class="btn-icon"></i>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
               <a href="#work" class="btn-ghost btn-lg">
                 <span>Explore Deliveries</span>
-                <i data-lucide="arrow-down" class="btn-icon"></i>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
               </a>
             </div>
-
 
           </div>
 
@@ -127,7 +126,7 @@
                     <span class="dot dot-green"></span>
                   </div>
                   <div class="terminal-title">
-                    <i data-lucide="terminal" class="icon-xs"></i>
+                    <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                     <span>texnoid.engine.telemetry.v4.ts</span>
                   </div>
                   <div class="terminal-badge">LIVE NODE</div>
@@ -167,12 +166,12 @@
 
                 <!-- Floating Badges -->
                 <div class="floating-badge badge-top-right">
-                  <i data-lucide="zap" class="icon-xs text-crimson"></i>
+                  <svg class="icon-xs text-crimson" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                   <span>3.4x CRO ACCELERATION</span>
                 </div>
 
                 <div class="floating-badge badge-bottom-left">
-                  <i data-lucide="shield-check" class="icon-xs text-green"></i>
+                  <svg class="icon-xs text-green" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
                   <span>ZERO TECHNICAL DEBT</span>
                 </div>
 
@@ -212,12 +211,11 @@
               </div>
               <span class="chrome-url">niha.com — Next.js + Shopify Plus</span>
               <a href="#" class="chrome-btn" aria-label="View Niha Case Study">
-                <i data-lucide="external-link" class="icon-xs"></i>
+                <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
             <div class="card-visual">
               <div class="visual-mockup bg-niha">
-
                 <div class="mockup-content">
                   <div class="mock-title">NIHA FASHION</div>
                   <div class="mock-desc">Enterprise Apparel & High-Load Storefront</div>
@@ -247,12 +245,11 @@
               </div>
               <span class="chrome-url">bathurchoice.com — Headless Commerce</span>
               <a href="#" class="chrome-btn" aria-label="View Bathurchoice Case Study">
-                <i data-lucide="external-link" class="icon-xs"></i>
+                <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
             <div class="card-visual">
               <div class="visual-mockup bg-bathur">
-
                 <div class="mockup-content">
                   <div class="mock-title">BATHURCHOICE</div>
                   <div class="mock-desc">Luxury Home & Architectural Commerce</div>
@@ -282,12 +279,11 @@
               </div>
               <span class="chrome-url">goldenkeyhyderabad.com — SaaS Portal</span>
               <a href="#" class="chrome-btn" aria-label="View Goldenkey Case Study">
-                <i data-lucide="external-link" class="icon-xs"></i>
+                <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
             <div class="card-visual">
               <div class="visual-mockup bg-goldenkey">
-
                 <div class="mockup-content">
                   <div class="mock-title">GOLDENKEY</div>
                   <div class="mock-desc">Real Estate SaaS & Property Ecosystem</div>
@@ -317,12 +313,11 @@
               </div>
               <span class="chrome-url">garage91.in — Automotive Engineering</span>
               <a href="#" class="chrome-btn" aria-label="View Garage91 Case Study">
-                <i data-lucide="external-link" class="icon-xs"></i>
+                <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
             <div class="card-visual">
               <div class="visual-mockup bg-garage">
-
                 <div class="mockup-content">
                   <div class="mock-title">GARAGE91</div>
                   <div class="mock-desc">Performance Automotive Configurator</div>
@@ -352,12 +347,11 @@
               </div>
               <span class="chrome-url">troove.co — D2C Subscription</span>
               <a href="#" class="chrome-btn" aria-label="View Troove Case Study">
-                <i data-lucide="external-link" class="icon-xs"></i>
+                <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
             <div class="card-visual">
               <div class="visual-mockup bg-troove">
-
                 <div class="mockup-content">
                   <div class="mock-title">TROOVE</div>
                   <div class="mock-desc">Direct-to-Consumer Beauty Brand</div>
@@ -387,12 +381,11 @@
               </div>
               <span class="chrome-url">420store.in — High-Scale Streetwear</span>
               <a href="#" class="chrome-btn" aria-label="View 420Store Case Study">
-                <i data-lucide="external-link" class="icon-xs"></i>
+                <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
             <div class="card-visual">
               <div class="visual-mockup bg-420">
-
                 <div class="mockup-content">
                   <div class="mock-title">420STORE</div>
                   <div class="mock-desc">High-Velocity Streetwear Storefront</div>
@@ -438,7 +431,7 @@
           <!-- Bento Pillar 1 (Wide Span 2) -->
           <div class="bento-card bento-span-2" data-reveal>
             <div class="bento-icon-wrapper">
-              <i data-lucide="code-2" class="bento-icon"></i>
+              <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
             </div>
             <div class="bento-content">
               <span class="pillar-number">PILLAR 01</span>
@@ -466,7 +459,7 @@
           <!-- Bento Pillar 2 -->
           <div class="bento-card" data-reveal data-reveal-delay="100">
             <div class="bento-icon-wrapper">
-              <i data-lucide="shopping-bag" class="bento-icon"></i>
+              <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
             </div>
             <div class="bento-content">
               <span class="pillar-number">PILLAR 02</span>
@@ -486,7 +479,7 @@
           <!-- Bento Pillar 3 -->
           <div class="bento-card" data-reveal>
             <div class="bento-icon-wrapper">
-              <i data-lucide="smartphone" class="bento-icon"></i>
+              <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
             </div>
             <div class="bento-content">
               <span class="pillar-number">PILLAR 03</span>
@@ -506,7 +499,7 @@
           <!-- Bento Pillar 4 (Wide Span 2) -->
           <div class="bento-card bento-span-2" data-reveal data-reveal-delay="100">
             <div class="bento-icon-wrapper">
-              <i data-lucide="layers" class="bento-icon"></i>
+              <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
             </div>
             <div class="bento-content">
               <span class="pillar-number">PILLAR 04</span>
@@ -567,23 +560,23 @@
 
             <div class="plan-features">
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span><strong>10 Dedicated Hours</strong> / month</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Immediate Bug & Layout Fixes</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Custom Liquid Theme Tweaks</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Security & App Conflict Audits</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Standard Email Support (24h SLA)</span>
               </div>
             </div>
@@ -597,7 +590,7 @@
           <div class="pricing-card card-featured" data-reveal data-reveal-delay="100">
             <div class="featured-glow-border"></div>
             <div class="popular-ribbon">
-              <i data-lucide="sparkles" class="icon-xs"></i>
+              <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"></path></svg>
               <span>RECOMMENDED FOR GROWTH</span>
             </div>
 
@@ -612,27 +605,27 @@
 
             <div class="plan-features">
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <svg class="icon-check text-crimson" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span><strong>20 Dedicated Hours</strong> / month</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <svg class="icon-check text-crimson" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Lighthouse 95+ Speed Tuning</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <svg class="icon-check text-crimson" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Advanced Custom App Logic</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <svg class="icon-check text-crimson" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>A/B CRO Experiment Setup</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <svg class="icon-check text-crimson" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Priority Engineer Access (4h SLA)</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check text-crimson"></i>
+                <svg class="icon-check text-crimson" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Monthly Architecture Review</span>
               </div>
             </div>
@@ -640,7 +633,7 @@
             <div class="pricing-footer">
               <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-primary w-full">
                 <span>Lock In Business Growth</span>
-                <i data-lucide="arrow-right" class="icon-sm"></i>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
           </div>
@@ -658,27 +651,27 @@
 
             <div class="plan-features">
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span><strong>35 Dedicated Hours</strong> / month</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Custom Private App Logic & Middleware</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>ERP, CRM & Warehouse Integration</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>24/7 Weekend & Flash Sale Coverage</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Dedicated Lead Developer Allocation</span>
               </div>
               <div class="feature-item">
-                <i data-lucide="check" class="icon-check"></i>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 <span>Private Slack Channel Access</span>
               </div>
             </div>
@@ -714,11 +707,11 @@
           <!-- Card 1 -->
           <div class="testimonial-card" data-reveal>
             <div class="rating-stars">
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
             <p class="testimonial-quote">
               "TEXNOID completely transformed our Shopify Plus store. Our mobile page load speed dropped from 4.2s to 0.6s, leading directly to a 42% spike in checkout completions during our Black Friday drop."
@@ -737,11 +730,11 @@
           <!-- Card 2 -->
           <div class="testimonial-card" data-reveal data-reveal-delay="100">
             <div class="rating-stars">
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
             <p class="testimonial-quote">
               "Working with Texnoid is like having a top 1% Silicon Valley engineering team on speed dial. They refactored our SaaS platform backend and eliminated all database bottlenecks before our Series A."
@@ -760,11 +753,11 @@
           <!-- Card 3 -->
           <div class="testimonial-card" data-reveal data-reveal-delay="200">
             <div class="rating-stars">
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
-              <i data-lucide="star" class="star-icon"></i>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
             <p class="testimonial-quote">
               "Their Monthly Shopify Retainer paid for itself within week two. The immediate bug resolution and checkout customization added millions in annual ARR to our subscription line."
@@ -794,7 +787,7 @@
         <div class="footer-brand-col">
           <div class="brand-logo footer-logo">
             <div class="logo-glyph">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 8L12 3L20 8V16L12 21L4 16V8Z" stroke="#FF334B" stroke-width="2" stroke-linejoin="round"/>
                 <path d="M12 3V12M12 12L20 16M12 12L4 16" stroke="#FF334B" stroke-width="1.5" stroke-opacity="0.7"/>
                 <circle cx="12" cy="12" r="2.5" fill="#FF334B"/>
