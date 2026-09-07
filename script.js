@@ -1,31 +1,21 @@
 /**
  * TEXNOID — BESPOKE AGENCY INTERACTION ENGINE
- * Mobile Navigation Drawer, Enhanced 3D Tilt Physics, & Viewport Auto-Fit Engine
+ * Mobile Navigation Drawer, Accessibility (Focus Management), 3D Tilt Physics, & Viewport Engine
  */
 
-// Global Mobile Navigation Functions (Accessible by inline HTML onclick handlers)
-window.toggleMobileDrawer = function() {
-  const drawer = document.getElementById('mobileDrawer');
-  const btn = document.getElementById('mobileMenuBtn');
-  if (!drawer) return;
-  
-  const isActive = drawer.classList.contains('active');
-  if (isActive) {
-    window.closeMobileDrawer();
-  } else {
-    window.openMobileDrawer();
-  }
-};
-
+// Global Mobile Navigation Functions with Focus Management (Avoids aria-hidden console warnings)
 window.openMobileDrawer = function() {
   const drawer = document.getElementById('mobileDrawer');
   const btn = document.getElementById('mobileMenuBtn');
   if (!drawer) return;
-  
+
+  drawer.removeAttribute('inert');
   drawer.classList.add('active');
-  drawer.setAttribute('aria-hidden', 'false');
   if (btn) btn.setAttribute('aria-expanded', 'true');
   document.body.classList.add('drawer-open');
+
+  const closeBtn = document.getElementById('drawerCloseBtn');
+  if (closeBtn) closeBtn.focus();
 };
 
 window.closeMobileDrawer = function() {
@@ -33,14 +23,34 @@ window.closeMobileDrawer = function() {
   const btn = document.getElementById('mobileMenuBtn');
   if (!drawer) return;
 
+  // Crucial Accessibility Fix: Blur focus from drawer elements BEFORE setting inert/hiding
+  if (document.activeElement && drawer.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+
   drawer.classList.remove('active');
-  drawer.setAttribute('aria-hidden', 'true');
-  if (btn) btn.setAttribute('aria-expanded', 'false');
+  drawer.setAttribute('inert', '');
   document.body.classList.remove('drawer-open');
+
+  if (btn) {
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+  }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Mark JS as loaded for reveal observers
+window.toggleMobileDrawer = function() {
+  const drawer = document.getElementById('mobileDrawer');
+  if (!drawer) return;
+
+  if (drawer.classList.contains('active')) {
+    window.closeMobileDrawer();
+  } else {
+    window.openMobileDrawer();
+  }
+};
+
+function initApp() {
+  // Mark JS as loaded for animation observers
   document.documentElement.classList.add('js-loaded');
 
   // 1. Safe Lucide Icons Initialization with Fallback
@@ -52,20 +62,25 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Lucide icons fallback active:', err);
   }
 
-  // 2. Header Scroll Elevation State
-  const header = document.getElementById('header');
-  if (header) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 25) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    }, { passive: true });
+  // 2. Attach Mobile Drawer Event Listeners
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.toggleMobileDrawer();
+    });
   }
 
-  // 3. Mobile Navigation Event Listeners
-  const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.closeMobileDrawer();
+    });
+  }
+
   drawerLinks.forEach(link => {
     link.addEventListener('click', () => {
       window.closeMobileDrawer();
@@ -77,6 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
       window.closeMobileDrawer();
     }
   });
+
+  // 3. Header Scroll Elevation State
+  const header = document.getElementById('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 25) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  }
 
   // 4. Fail-Safe Scroll Reveal Observer
   const revealElements = document.querySelectorAll('[data-reveal]');
@@ -107,11 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }, 350);
 
-  // 5. Enhanced 3D Tilt Hover Physics Engine
+  // 5. Enhanced 3D Tilt Physics Engine
   const tiltElements = document.querySelectorAll('[data-tilt]');
 
   tiltElements.forEach(card => {
-    const maxTilt = 12; // Maximum tilt angle in degrees
+    const maxTilt = 12;
     const shine = card.querySelector('.card-shine, .card-glass-shine');
 
     card.addEventListener('mousemove', (e) => {
@@ -153,4 +180,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearElement) {
     yearElement.innerText = new Date().getFullYear();
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}

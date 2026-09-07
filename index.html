@@ -6,6 +6,9 @@
   <title>TEXNOID — High-Scale Digital Product Studio & Engineering Agency</title>
   <meta name="description" content="TEXNOID is an elite digital product studio engineering resilient web applications, headless Shopify commerce, cross-platform mobile apps, and enterprise SaaS systems." />
   
+  <!-- Favicon to prevent 404 favicon.ico errors -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF334B' stroke-width='2'%3E%3Cpath d='M4 8L12 3L20 8V16L12 21L4 16V8Z'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%23FF334B'/%3E%3C/svg%3E" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +16,9 @@
   
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
-  
+
   <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -56,7 +60,7 @@
           <span>Start a Project</span>
           <svg class="icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <button class="mobile-toggle" id="mobileMenuBtn" onclick="toggleMobileDrawer()" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <svg class="icon-menu-hamburger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
@@ -64,7 +68,7 @@
   </header>
 
   <!-- Mobile Drawer Overlay -->
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="mobile-drawer" id="mobileDrawer" inert>
     <div class="drawer-header">
       <div class="brand-logo">
         <div class="logo-glyph">
@@ -76,34 +80,34 @@
         </div>
         <span class="brand-name">TEXNOID<span class="brand-mark">®</span></span>
       </div>
-      <button class="drawer-close-btn" id="drawerCloseBtn" onclick="closeMobileDrawer()" aria-label="Close Menu">
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
 
     <div class="drawer-content">
       <nav class="drawer-nav">
-        <a href="#work" class="drawer-link" onclick="closeMobileDrawer()">
+        <a href="#work" class="drawer-link">
           <span>Work</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#capabilities" class="drawer-link" onclick="closeMobileDrawer()">
+        <a href="#capabilities" class="drawer-link">
           <span>Capabilities</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#retainers" class="drawer-link" onclick="closeMobileDrawer()">
+        <a href="#retainers" class="drawer-link">
           <span>Retainers</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#proof" class="drawer-link" onclick="closeMobileDrawer()">
+        <a href="#proof" class="drawer-link">
           <span>Client Proof</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </nav>
 
       <div class="drawer-actions">
-        <a href="#retainers" class="btn-primary w-full" onclick="closeMobileDrawer()">Start a Project</a>
-        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full" onclick="closeMobileDrawer()">Schedule Discovery</a>
+        <a href="#retainers" class="btn-primary w-full drawer-action-btn">Start a Project</a>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full drawer-action-btn">Schedule Discovery</a>
       </div>
     </div>
   </div>
@@ -882,6 +886,5 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
