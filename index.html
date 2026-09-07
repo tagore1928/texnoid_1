@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>TEXNOID — High-Scale Digital Product Studio & Engineering Agency</title>
   <meta name="description" content="TEXNOID is an elite digital product studio engineering resilient web applications, headless Shopify commerce, cross-platform mobile apps, and enterprise SaaS systems." />
   
@@ -56,14 +56,14 @@
           <span>Start a Project</span>
           <svg class="icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <button class="mobile-toggle" id="mobileMenuBtn" onclick="toggleMobileDrawer()" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <svg class="icon-menu-hamburger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Overlay (Placed directly under <body> to prevent CSS stacking context bugs) -->
+  <!-- Mobile Drawer Overlay -->
   <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
     <div class="drawer-header">
       <div class="brand-logo">
@@ -76,34 +76,34 @@
         </div>
         <span class="brand-name">TEXNOID<span class="brand-mark">®</span></span>
       </div>
-      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">
+      <button class="drawer-close-btn" id="drawerCloseBtn" onclick="closeMobileDrawer()" aria-label="Close Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
 
     <div class="drawer-content">
       <nav class="drawer-nav">
-        <a href="#work" class="drawer-link">
+        <a href="#work" class="drawer-link" onclick="closeMobileDrawer()">
           <span>Work</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#capabilities" class="drawer-link">
+        <a href="#capabilities" class="drawer-link" onclick="closeMobileDrawer()">
           <span>Capabilities</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#retainers" class="drawer-link">
+        <a href="#retainers" class="drawer-link" onclick="closeMobileDrawer()">
           <span>Retainers</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#proof" class="drawer-link">
+        <a href="#proof" class="drawer-link" onclick="closeMobileDrawer()">
           <span>Client Proof</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </nav>
 
       <div class="drawer-actions">
-        <a href="#retainers" class="btn-primary w-full">Start a Project</a>
-        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full">Schedule Discovery</a>
+        <a href="#retainers" class="btn-primary w-full" onclick="closeMobileDrawer()">Start a Project</a>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full" onclick="closeMobileDrawer()">Schedule Discovery</a>
       </div>
     </div>
   </div>
@@ -144,8 +144,8 @@
           </div>
 
           <!-- Hero Visual: 3D Telemetry Card -->
-          <div class="hero-visual" data-reveal data-reveal-delay="200">
-            <div class="telemetry-card-wrapper" id="heroCardWrapper">
+          <div class="hero-visual" data-reveal data-reveal-delay="100">
+            <div class="telemetry-card-wrapper" id="heroCardWrapper" data-tilt>
               <div class="telemetry-card" id="heroCard">
                 <div class="card-glass-shine"></div>
                 
@@ -193,17 +193,6 @@
 
   <span class="token-keyword">return await</span> session.<span class="token-function">executeOrderSync</span>(order);
 }</code></pre>
-                </div>
-
-                <!-- Floating Badges -->
-                <div class="floating-badge badge-top-right">
-                  <svg class="icon-xs text-crimson" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                  <span>3.4x CRO ACCELERATION</span>
-                </div>
-
-                <div class="floating-badge badge-bottom-left">
-                  <svg class="icon-xs text-green" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-                  <span>ZERO TECHNICAL DEBT</span>
                 </div>
 
               </div>
@@ -460,7 +449,7 @@
         <div class="bento-grid">
           
           <!-- Bento Pillar 1 (Wide Span 2) -->
-          <div class="bento-card bento-span-2" data-reveal>
+          <div class="bento-card bento-span-2" data-tilt data-reveal>
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
             </div>
@@ -488,7 +477,7 @@
           </div>
 
           <!-- Bento Pillar 2 -->
-          <div class="bento-card" data-reveal data-reveal-delay="100">
+          <div class="bento-card" data-tilt data-reveal data-reveal-delay="100">
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
             </div>
@@ -508,7 +497,7 @@
           </div>
 
           <!-- Bento Pillar 3 -->
-          <div class="bento-card" data-reveal>
+          <div class="bento-card" data-tilt data-reveal>
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
             </div>
@@ -528,7 +517,7 @@
           </div>
 
           <!-- Bento Pillar 4 (Wide Span 2) -->
-          <div class="bento-card bento-span-2" data-reveal data-reveal-delay="100">
+          <div class="bento-card bento-span-2" data-tilt data-reveal data-reveal-delay="100">
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
             </div>
@@ -579,7 +568,7 @@
         <div class="pricing-grid">
           
           <!-- Tier 1: Starter Support -->
-          <div class="pricing-card" data-reveal>
+          <div class="pricing-card" data-tilt data-reveal>
             <div class="pricing-header">
               <div class="plan-badge">STARTER</div>
               <h3 class="plan-name">Starter Support</h3>
@@ -618,7 +607,7 @@
           </div>
 
           <!-- Tier 2: Business Growth (HIGHLIGHTED CARD) -->
-          <div class="pricing-card card-featured" data-reveal data-reveal-delay="100">
+          <div class="pricing-card card-featured" data-tilt data-reveal data-reveal-delay="100">
             <div class="featured-glow-border"></div>
             <div class="popular-ribbon">
               <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"></path></svg>
@@ -670,7 +659,7 @@
           </div>
 
           <!-- Tier 3: Enterprise Prime -->
-          <div class="pricing-card" data-reveal data-reveal-delay="200">
+          <div class="pricing-card" data-tilt data-reveal data-reveal-delay="200">
             <div class="pricing-header">
               <div class="plan-badge">ENTERPRISE</div>
               <h3 class="plan-name">Enterprise Prime</h3>
@@ -736,7 +725,7 @@
         <div class="testimonials-grid">
           
           <!-- Card 1 -->
-          <div class="testimonial-card" data-reveal>
+          <div class="testimonial-card" data-tilt data-reveal>
             <div class="rating-stars">
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -759,7 +748,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="testimonial-card" data-reveal data-reveal-delay="100">
+          <div class="testimonial-card" data-tilt data-reveal data-reveal-delay="100">
             <div class="rating-stars">
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -782,7 +771,7 @@
           </div>
 
           <!-- Card 3 -->
-          <div class="testimonial-card" data-reveal data-reveal-delay="200">
+          <div class="testimonial-card" data-tilt data-reveal data-reveal-delay="200">
             <div class="rating-stars">
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

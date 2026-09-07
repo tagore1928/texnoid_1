@@ -1,10 +1,46 @@
 /**
  * TEXNOID — BESPOKE AGENCY INTERACTION ENGINE
- * Mobile Navigation & High-Performance Viewport Engine
+ * Mobile Navigation Drawer, Enhanced 3D Tilt Physics, & Viewport Auto-Fit Engine
  */
 
+// Global Mobile Navigation Functions (Accessible by inline HTML onclick handlers)
+window.toggleMobileDrawer = function() {
+  const drawer = document.getElementById('mobileDrawer');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (!drawer) return;
+  
+  const isActive = drawer.classList.contains('active');
+  if (isActive) {
+    window.closeMobileDrawer();
+  } else {
+    window.openMobileDrawer();
+  }
+};
+
+window.openMobileDrawer = function() {
+  const drawer = document.getElementById('mobileDrawer');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (!drawer) return;
+  
+  drawer.classList.add('active');
+  drawer.setAttribute('aria-hidden', 'false');
+  if (btn) btn.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('drawer-open');
+};
+
+window.closeMobileDrawer = function() {
+  const drawer = document.getElementById('mobileDrawer');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (!drawer) return;
+
+  drawer.classList.remove('active');
+  drawer.setAttribute('aria-hidden', 'true');
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('drawer-open');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Mark JS as loaded for animation observers
+  // Mark JS as loaded for reveal observers
   document.documentElement.classList.add('js-loaded');
 
   // 1. Safe Lucide Icons Initialization with Fallback
@@ -20,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
   if (header) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 25) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
@@ -28,62 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // 3. Mobile Navigation Drawer Controls
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
-  const mobileDrawer = document.getElementById('mobileDrawer');
+  // 3. Mobile Navigation Event Listeners
   const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
-
-  function openDrawer() {
-    if (!mobileDrawer) return;
-    mobileDrawer.classList.add('active');
-    mobileDrawer.setAttribute('aria-hidden', 'false');
-    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('drawer-open');
-  }
-
-  function closeDrawer() {
-    if (!mobileDrawer) return;
-    mobileDrawer.classList.remove('active');
-    mobileDrawer.setAttribute('aria-hidden', 'true');
-    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('drawer-open');
-  }
-
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (mobileDrawer && mobileDrawer.classList.contains('active')) {
-        closeDrawer();
-      } else {
-        openDrawer();
-      }
-    });
-  }
-
-  if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      closeDrawer();
-    });
-  }
-
   drawerLinks.forEach(link => {
     link.addEventListener('click', () => {
-      closeDrawer();
+      window.closeMobileDrawer();
     });
   });
 
-  // Close drawer if user presses Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
-      closeDrawer();
+    if (e.key === 'Escape') {
+      window.closeMobileDrawer();
     }
   });
 
-  // 4. Fail-Safe Scroll-Triggered Reveal Observer
+  // 4. Fail-Safe Scroll Reveal Observer
   const revealElements = document.querySelectorAll('[data-reveal]');
 
   if ('IntersectionObserver' in window) {
@@ -99,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, {
       threshold: 0.05,
-      rootMargin: '50px 0px'
+      rootMargin: '60px 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
@@ -107,109 +102,53 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
-  // Safety Fallback: Guarantee all elements become visible after 350ms
+  // Guarantee all reveal elements become visible after 350ms
   setTimeout(() => {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }, 350);
 
-  // 5. 3D Perspective Mouse-Tilt Effect (Desktop Only)
-  if (window.innerWidth > 768) {
-    const tiltElements = document.querySelectorAll('[data-tilt], .telemetry-card-wrapper');
+  // 5. Enhanced 3D Tilt Hover Physics Engine
+  const tiltElements = document.querySelectorAll('[data-tilt]');
 
-    tiltElements.forEach(cardWrapper => {
-      const card = cardWrapper.classList.contains('telemetry-card-wrapper') 
-        ? cardWrapper.querySelector('.telemetry-card') 
-        : cardWrapper;
+  tiltElements.forEach(card => {
+    const maxTilt = 12; // Maximum tilt angle in degrees
+    const shine = card.querySelector('.card-shine, .card-glass-shine');
 
-      if (!card) return;
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-      const shine = card.querySelector('.card-shine, .card-glass-shine');
-      const maxTilt = 8;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-      cardWrapper.addEventListener('mousemove', (e) => {
-        const rect = cardWrapper.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
+      const rotateX = -((y - centerY) / centerY) * maxTilt;
+      const rotateY = ((x - centerX) / centerX) * maxTilt;
 
-        const mouseX = (e.clientX - rect.left - width / 2) / (width / 2);
-        const mouseY = (e.clientY - rect.top - height / 2) / (height / 2);
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      card.style.transition = 'none';
 
-        const rotateX = -mouseY * maxTilt;
-        const rotateY = mouseX * maxTilt;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
-
-        if (shine) {
-          const shineX = ((e.clientX - rect.left) / width) * 100;
-          const shineY = ((e.clientY - rect.top) / height) * 100;
-          shine.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255, 255, 255, 0.16) 0%, transparent 60%)`;
-        }
-      });
-
-      cardWrapper.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        card.style.transition = 'transform 0.4s ease-out';
-        if (shine) {
-          shine.style.background = '';
-        }
-      });
-
-      cardWrapper.addEventListener('mouseenter', () => {
-        card.style.transition = 'transform 0.08s ease-out';
-      });
-    });
-  }
-
-  // 6. Hero Telemetry Metric Counters Animation
-  const counters = document.querySelectorAll('[data-counter]');
-  let hasAnimatedCounters = false;
-
-  function animateCounters() {
-    if (hasAnimatedCounters) return;
-    hasAnimatedCounters = true;
-
-    counters.forEach(counter => {
-      const target = parseFloat(counter.getAttribute('data-counter'));
-      if (isNaN(target)) return;
-      
-      const duration = 1600;
-      const isDecimal = target % 1 !== 0;
-      const startTime = performance.now();
-
-      function updateNumber(currentTime) {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / duration, 1);
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-        const currentValue = easedProgress * target;
-
-        counter.innerText = isDecimal ? currentValue.toFixed(2) : Math.floor(currentValue);
-
-        if (progress < 1) {
-          requestAnimationFrame(updateNumber);
-        } else {
-          counter.innerText = isDecimal ? target.toFixed(2) : target;
-        }
+      if (shine) {
+        const shineX = (x / rect.width) * 100;
+        const shineY = (y / rect.height) * 100;
+        shine.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255, 255, 255, 0.22) 0%, transparent 65%)`;
       }
-
-      requestAnimationFrame(updateNumber);
     });
-  }
 
-  // Trigger counters
-  const heroSection = document.getElementById('hero');
-  if (heroSection && 'IntersectionObserver' in window) {
-    const heroObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        animateCounters();
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      card.style.transition = 'transform 0.4s ease-out';
+      if (shine) {
+        shine.style.background = '';
       }
-    }, { threshold: 0.1 });
+    });
 
-    heroObserver.observe(heroSection);
-  } else {
-    animateCounters();
-  }
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'none';
+    });
+  });
 
-  // 7. Dynamic Copyright Year
+  // 6. Dynamic Copyright Year
   const yearElement = document.getElementById('copyrightYear');
   if (yearElement) {
     yearElement.innerText = new Date().getFullYear();
