@@ -1,6 +1,6 @@
 /* ==========================================================================
    TEXNOID — BESPOKE AGENCY STYLESHEET
-   Design System, CSS Variables, Enhanced 3D Tilt Physics, Glassmorphism, Bento Grid
+   Design System, CSS Variables, Scoped 3D Tilt Physics, Glassmorphism, Bento Grid
    Production Hardened & Fully Mobile Responsive
    ========================================================================== */
 
@@ -99,8 +99,9 @@ button {
   font-family: inherit;
   background: none;
   border: none;
-  cursor: pointer;
-  touch-action: manipulation;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: rgba(255, 51, 75, 0.2);
 }
 
 svg {
@@ -196,6 +197,8 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   min-height: 48px;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .btn-primary:hover {
@@ -223,6 +226,8 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(8px);
   transition: all var(--transition-fast);
   min-height: 48px;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .btn-ghost:hover {
@@ -246,6 +251,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
   transition: all var(--transition-fast);
   min-height: 48px;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .btn-secondary:hover {
@@ -378,18 +385,23 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent-crimson);
 }
 
+/* Bulletproof Mobile Toggle */
 .mobile-toggle {
   display: none;
   color: var(--text-primary);
   padding: 0.5rem;
   border-radius: 8px;
   border: 1px solid var(--border-glass);
-  background: rgba(255, 255, 255, 0.05);
-  width: 44px;
-  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  width: 46px;
+  height: 46px;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: rgba(255, 51, 75, 0.3);
+  position: relative;
+  z-index: 1001;
 }
 
 /* Standalone Mobile Drawer Overlay */
@@ -399,7 +411,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100vw;
   height: 100dvh;
   background: #0B0F17;
-  z-index: 9999;
+  z-index: 99999;
   display: flex;
   flex-direction: column;
   padding: 1.25rem 1.5rem 2.5rem 1.5rem;
@@ -429,13 +441,15 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border-glass);
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: pointer !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: rgba(255, 51, 75, 0.3);
 }
 
 .drawer-content {
@@ -463,6 +477,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: color var(--transition-fast), padding-left var(--transition-fast);
+  cursor: pointer !important;
+  touch-action: manipulation !important;
 }
 
 .drawer-link:hover {
@@ -478,7 +494,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   7. HERO SECTION
+   7. HERO SECTION & NEW PRODUCT ENGINE HUB VISUAL
    -------------------------------------------------------------------------- */
 .hero-section {
   padding-top: calc(var(--nav-height) + 3.5rem);
@@ -560,139 +576,189 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
-/* 3D Telemetry Card */
+/* Unique Product Architecture Hub Visual */
 .hero-visual {
-  perspective: 1000px;
   width: 100%;
 }
 
-.telemetry-card-wrapper {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  width: 100%;
-}
-
-.telemetry-card {
+.product-engine-card {
   position: relative;
   background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-glass);
-  border-radius: 16px;
+  border: 1px solid var(--border-glass-hover);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(255, 51, 75, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(255, 51, 75, 0.12);
   width: 100%;
-  transform-style: preserve-3d;
-  transition: border-color var(--transition-fast);
 }
 
-.telemetry-card:hover {
-  border-color: var(--border-crimson);
-}
-
-.card-glass-shine {
+.engine-glass-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+  background: radial-gradient(circle at 80% 20%, rgba(255, 51, 75, 0.12) 0%, transparent 60%);
   pointer-events: none;
-  z-index: 5;
 }
 
-.terminal-header {
+.engine-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: rgba(11, 15, 23, 0.9);
+  padding: 1rem 1.25rem;
+  background: rgba(11, 15, 23, 0.92);
   border-bottom: 1px solid var(--border-glass);
 }
 
-.terminal-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.dot-red { background: #FF5F56; }
-.dot-yellow { background: #FFBD2E; }
-.dot-green { background: #27C93F; }
-
-.terminal-title {
+.engine-status {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  gap: 0.5rem;
 }
 
-.terminal-badge {
+.status-indicator-green {
+  width: 9px;
+  height: 9px;
+  background: var(--color-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-green);
+}
+
+.engine-title-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.engine-badge-sub {
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 700;
-  color: var(--color-green);
-  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-crimson);
+  background: rgba(255, 51, 75, 0.1);
   padding: 3px 8px;
   border-radius: 4px;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  white-space: nowrap;
+  border: 1px solid var(--border-crimson);
 }
 
-.telemetry-metrics-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: rgba(13, 17, 23, 0.95);
-  border-bottom: 1px solid var(--border-glass);
-}
-
-.t-metric {
+.engine-body {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
 }
 
-.t-label {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+.product-hub-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hub-icon-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hub-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.active-pill {
+  background: rgba(255, 51, 75, 0.1);
+  border-color: var(--border-crimson);
+  color: #FFFFFF;
+}
+
+.architecture-flow-visual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background: #090C12;
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.step-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+}
+
+.step-1 { color: var(--color-blue); border-color: rgba(59, 130, 246, 0.4); }
+.step-2 { color: var(--color-pink); border-color: rgba(236, 72, 153, 0.4); }
+.step-3 { color: var(--accent-crimson); border-color: var(--border-crimson); }
+
+.step-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.flow-connector {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.connector-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--border-glass) 0%, var(--accent-crimson) 50%, var(--border-glass) 100%);
+  position: relative;
+}
+
+.engine-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(13, 17, 23, 0.95);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+}
+
+.e-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.e-stat-val {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.e-stat-lbl {
+  font-size: 0.7rem;
   color: var(--text-muted);
 }
-
-.t-value {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.terminal-body {
-  padding: 1.25rem 1rem;
-  background: #090C12;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  line-height: 1.65;
-  overflow-x: auto;
-  max-width: 100%;
-}
-
-.terminal-body pre {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-/* Syntax Tokens */
-.token-keyword { color: var(--color-pink); }
-.token-function { color: var(--color-blue); }
-.token-string { color: var(--color-green); }
-.token-comment { color: var(--text-muted); font-style: italic; }
-.token-type { color: var(--color-yellow); }
-.token-boolean { color: var(--accent-crimson); }
-.token-number { color: #A78BFA; }
 
 /* --------------------------------------------------------------------------
    8. SECTION HEADERS & GENERAL SECTIONS
@@ -747,7 +813,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   9. 3D TILT PORTFOLIO CARDS
+   9. SELECTED WORKS 3D TILT PORTFOLIO CARDS & COVER PHOTOS
    -------------------------------------------------------------------------- */
 .portfolio-grid {
   display: grid;
@@ -756,6 +822,7 @@ h1, h2, h3, h4, h5, h6 {
   perspective: 1000px;
 }
 
+/* 3D Tilt is EXCLUSIVELY enabled for .portfolio-card */
 .portfolio-card {
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-glass);
@@ -769,13 +836,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .portfolio-card:hover {
   border-color: var(--border-glass-hover);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 51, 75, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 51, 75, 0.15);
 }
 
 .card-shine {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.22), transparent 70%);
   opacity: 0;
   transition: opacity var(--transition-fast);
   pointer-events: none;
@@ -828,48 +895,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-visual {
-  height: 190px;
+  height: 220px;
   position: relative;
   overflow: hidden;
+  background: #090C12;
 }
 
-.visual-mockup {
+.portfolio-cover-img {
   width: 100%;
   height: 100%;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: transform var(--transition-smooth);
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
-.portfolio-card:hover .visual-mockup {
-  transform: scale(1.04);
-}
-
-.bg-niha { background: linear-gradient(135deg, #1A1C29 0%, #0F172A 100%); }
-.bg-bathur { background: linear-gradient(135deg, #1F2937 0%, #111827 100%); }
-.bg-goldenkey { background: linear-gradient(135deg, #2D1B2D 0%, #111827 100%); }
-.bg-garage { background: linear-gradient(135deg, #2A1719 0%, #0F172A 100%); }
-.bg-troove { background: linear-gradient(135deg, #1B2A2D 0%, #111827 100%); }
-.bg-420 { background: linear-gradient(135deg, #2D231B 0%, #0F172A 100%); }
-
-.mockup-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.mock-title {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
-}
-
-.mock-desc {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+.portfolio-card:hover .portfolio-cover-img {
+  transform: scale(1.06);
 }
 
 .card-details {
@@ -907,13 +949,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   10. CAPABILITIES BENTO GRID
+   10. CAPABILITIES BENTO GRID (Standard Clean Cards - No 3D Tilt)
    -------------------------------------------------------------------------- */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  perspective: 1000px;
 }
 
 .bento-card {
@@ -926,14 +967,12 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .bento-card:hover {
   border-color: var(--border-glass-hover);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
 .bento-span-2 {
@@ -1046,14 +1085,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   11. PRICING & RETAINERS
+   11. PRICING & RETAINERS (Clean Cards - No 3D Tilt)
    -------------------------------------------------------------------------- */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
   align-items: stretch;
-  perspective: 1000px;
 }
 
 .pricing-card {
@@ -1065,13 +1103,12 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .pricing-card:hover {
   border-color: var(--border-glass-hover);
+  transform: translateY(-4px);
 }
 
 .card-featured {
@@ -1188,13 +1225,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------
-   12. CLIENT TESTIMONIALS
+   12. CLIENT TESTIMONIALS (Clean Cards - No 3D Tilt)
    -------------------------------------------------------------------------- */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
-  perspective: 1000px;
 }
 
 .testimonial-card {
@@ -1205,13 +1241,12 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .testimonial-card:hover {
   border-color: var(--border-glass-hover);
+  transform: translateY(-4px);
 }
 
 .rating-stars {
@@ -1534,6 +1569,23 @@ html.js-loaded [data-reveal].is-visible {
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .architecture-flow-visual {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .flow-connector {
+    width: 2px;
+    height: 24px;
+    padding: 0;
+  }
+
+  .connector-line {
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--border-glass) 0%, var(--accent-crimson) 50%, var(--border-glass) 100%);
+  }
 }
 
 @media (max-width: 480px) {
@@ -1552,18 +1604,5 @@ html.js-loaded [data-reveal].is-visible {
   .footer-nav-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-  }
-
-  .telemetry-metrics-bar {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0.6rem;
-  }
-
-  .t-label {
-    font-size: 0.55rem;
-  }
-
-  .t-value {
-    font-size: 0.75rem;
   }
 }

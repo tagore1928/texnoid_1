@@ -6,7 +6,7 @@
   <title>TEXNOID — High-Scale Digital Product Studio & Engineering Agency</title>
   <meta name="description" content="TEXNOID is an elite digital product studio engineering resilient web applications, headless Shopify commerce, cross-platform mobile apps, and enterprise SaaS systems." />
   
-  <!-- Favicon to prevent 404 favicon.ico errors -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF334B' stroke-width='2'%3E%3Cpath d='M4 8L12 3L20 8V16L12 21L4 16V8Z'/%3E%3Ccircle cx='12' cy='12' r='2.5' fill='%23FF334B'/%3E%3C/svg%3E" />
 
   <!-- Google Fonts -->
@@ -18,6 +18,48 @@
   <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Immediate Global Drawer Script (Executes prior to defer scripts for deployed sites) -->
+  <script>
+    window.openMobileDrawer = function() {
+      var drawer = document.getElementById('mobileDrawer');
+      var btn = document.getElementById('mobileMenuBtn');
+      if (!drawer) return;
+      drawer.removeAttribute('inert');
+      drawer.classList.add('active');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('drawer-open');
+      var closeBtn = document.getElementById('drawerCloseBtn');
+      if (closeBtn) closeBtn.focus();
+    };
+
+    window.closeMobileDrawer = function() {
+      var drawer = document.getElementById('mobileDrawer');
+      var btn = document.getElementById('mobileMenuBtn');
+      if (!drawer) return;
+      if (document.activeElement && drawer.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
+      drawer.classList.remove('active');
+      drawer.setAttribute('inert', '');
+      document.body.classList.remove('drawer-open');
+      if (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    };
+
+    window.toggleMobileDrawer = function() {
+      var drawer = document.getElementById('mobileDrawer');
+      if (!drawer) return;
+      if (drawer.classList.contains('active')) {
+        window.closeMobileDrawer();
+      } else {
+        window.openMobileDrawer();
+      }
+    };
+  </script>
+
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -60,7 +102,7 @@
           <span>Start a Project</span>
           <svg class="icon-sm" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <button class="mobile-toggle" id="mobileMenuBtn" onclick="window.toggleMobileDrawer && window.toggleMobileDrawer()" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <svg class="icon-menu-hamburger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
@@ -74,40 +116,40 @@
         <div class="logo-glyph">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 8L12 3L20 8V16L12 21L4 16V8Z" stroke="#FF334B" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M12 3V12M12 12L20 16M12 12L4 16" stroke="#FF334B" stroke-width="1.5" stroke-opacity="0.7"/>
+            <path d="M12 3V12M12 12L4 16M12 12L4 16" stroke="#FF334B" stroke-width="1.5" stroke-opacity="0.7"/>
             <circle cx="12" cy="12" r="2.5" fill="#FF334B"/>
           </svg>
         </div>
         <span class="brand-name">TEXNOID<span class="brand-mark">®</span></span>
       </div>
-      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">
+      <button class="drawer-close-btn" id="drawerCloseBtn" onclick="window.closeMobileDrawer && window.closeMobileDrawer()" aria-label="Close Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
 
     <div class="drawer-content">
       <nav class="drawer-nav">
-        <a href="#work" class="drawer-link">
+        <a href="#work" class="drawer-link" onclick="window.closeMobileDrawer && window.closeMobileDrawer()">
           <span>Work</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#capabilities" class="drawer-link">
+        <a href="#capabilities" class="drawer-link" onclick="window.closeMobileDrawer && window.closeMobileDrawer()">
           <span>Capabilities</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#retainers" class="drawer-link">
+        <a href="#retainers" class="drawer-link" onclick="window.closeMobileDrawer && window.closeMobileDrawer()">
           <span>Retainers</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
-        <a href="#proof" class="drawer-link">
+        <a href="#proof" class="drawer-link" onclick="window.closeMobileDrawer && window.closeMobileDrawer()">
           <span>Client Proof</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </nav>
 
       <div class="drawer-actions">
-        <a href="#retainers" class="btn-primary w-full drawer-action-btn">Start a Project</a>
-        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full drawer-action-btn">Schedule Discovery</a>
+        <a href="#retainers" class="btn-primary w-full drawer-action-btn" onclick="window.closeMobileDrawer && window.closeMobileDrawer()">Start a Project</a>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn-secondary w-full drawer-action-btn" onclick="window.closeMobileDrawer && window.closeMobileDrawer()">Schedule Discovery</a>
       </div>
     </div>
   </div>
@@ -147,59 +189,88 @@
 
           </div>
 
-          <!-- Hero Visual: 3D Telemetry Card -->
+          <!-- Hero Visual: Unique Interactive Product Architecture Hub -->
           <div class="hero-visual" data-reveal data-reveal-delay="100">
-            <div class="telemetry-card-wrapper" id="heroCardWrapper" data-tilt>
-              <div class="telemetry-card" id="heroCard">
-                <div class="card-glass-shine"></div>
+            <div class="product-engine-card">
+              <div class="engine-glass-glow"></div>
+              
+              <!-- Engine Header -->
+              <div class="engine-header">
+                <div class="engine-status">
+                  <span class="status-indicator-green"></span>
+                  <span class="engine-title-text">TEXNOID DIGITAL PRODUCT ENGINE</span>
+                </div>
+                <span class="engine-badge-sub">HIGH-PERFORMANCE ECOSYSTEM</span>
+              </div>
+
+              <!-- Product Core Showcase Grid -->
+              <div class="engine-body">
                 
-                <!-- Terminal Header -->
-                <div class="terminal-header">
-                  <div class="terminal-dots">
-                    <span class="dot dot-red"></span>
-                    <span class="dot dot-yellow"></span>
-                    <span class="dot dot-green"></span>
+                <!-- Main App Visual Feature -->
+                <div class="product-hub-showcase">
+                  <div class="hub-icon-row">
+                    <div class="hub-pill active-pill">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                      <span>Web & Mobile SaaS</span>
+                    </div>
+                    <div class="hub-pill">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                      <span>Headless Shopify Plus</span>
+                    </div>
+                    <div class="hub-pill">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                      <span>Native iOS & Android</span>
+                    </div>
                   </div>
-                  <div class="terminal-title">
-                    <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                    <span>texnoid.engine.telemetry.v4.ts</span>
-                  </div>
-                  <div class="terminal-badge">LIVE NODE</div>
-                </div>
 
-                <!-- Telemetry Metrics Bar -->
-                <div class="telemetry-metrics-bar">
-                  <div class="t-metric">
-                    <span class="t-label">LIGHTHOUSE</span>
-                    <span class="t-value text-green">99 / 100</span>
+                  <!-- Visual Product Pipeline Flow Diagram -->
+                  <div class="architecture-flow-visual">
+                    <div class="flow-step">
+                      <div class="step-circle step-1">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                      </div>
+                      <span class="step-name">1. UI/UX Strategy</span>
+                    </div>
+                    <div class="flow-connector">
+                      <span class="connector-line"></span>
+                    </div>
+                    <div class="flow-step">
+                      <div class="step-circle step-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                      </div>
+                      <span class="step-name">2. High-Scale Code</span>
+                    </div>
+                    <div class="flow-connector">
+                      <span class="connector-line"></span>
+                    </div>
+                    <div class="flow-step">
+                      <div class="step-circle step-3">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                      </div>
+                      <span class="step-name">3. Enterprise Scale</span>
+                    </div>
                   </div>
-                  <div class="t-metric">
-                    <span class="t-label">CACHE HIT RATE</span>
-                    <span class="t-value text-crimson">99.4%</span>
+
+                  <!-- Live Stats Strip -->
+                  <div class="engine-stats-strip">
+                    <div class="e-stat">
+                      <span class="e-stat-val text-green">Sub-50ms</span>
+                      <span class="e-stat-lbl">Global Latency</span>
+                    </div>
+                    <div class="e-stat">
+                      <span class="e-stat-val text-crimson">100%</span>
+                      <span class="e-stat-lbl">Pixel Fidelity</span>
+                    </div>
+                    <div class="e-stat">
+                      <span class="e-stat-val text-blue">Zero</span>
+                      <span class="e-stat-lbl">Technical Debt</span>
+                    </div>
                   </div>
-                  <div class="t-metric">
-                    <span class="t-label">TTFB</span>
-                    <span class="t-value text-blue">&lt; 14ms</span>
-                  </div>
-                </div>
 
-                <!-- Terminal Code Window -->
-                <div class="terminal-body">
-                  <pre><code><span class="token-keyword">import</span> { <span class="token-function">TexnoidPipeline</span>, <span class="token-type">RedisCache</span> } <span class="token-keyword">from</span> <span class="token-string">'@texnoid/core'</span>;
-
-<span class="token-comment">// High-Concurrency Checkout Pipeline</span>
-<span class="token-keyword">export async function</span> <span class="token-function">processOrder</span>(order: <span class="token-type">OrderPayload</span>) {
-  <span class="token-keyword">const</span> session = <span class="token-keyword">await</span> <span class="token-function">TexnoidPipeline</span>.<span class="token-function">init</span>({
-    edgeRouting: <span class="token-boolean">true</span>,
-    cacheStrategy: <span class="token-string">'STALE_WHILE_REVALIDATE'</span>,
-    latencyTargetMs: <span class="token-number">12</span>
-  });
-
-  <span class="token-keyword">return await</span> session.<span class="token-function">executeOrderSync</span>(order);
-}</code></pre>
                 </div>
 
               </div>
+
             </div>
           </div>
 
@@ -223,7 +294,7 @@
           </p>
         </div>
 
-        <!-- 6 Portfolio Cards Grid -->
+        <!-- 6 Portfolio Cards Grid (3D Hover ONLY applied to these Selected Works cards) -->
         <div class="portfolio-grid">
           
           <!-- Project 1: Niha -->
@@ -239,12 +310,7 @@
               </a>
             </div>
             <div class="card-visual">
-              <div class="visual-mockup bg-niha">
-                <div class="mockup-content">
-                  <div class="mock-title">NIHA FASHION</div>
-                  <div class="mock-desc">Enterprise Apparel & High-Load Storefront</div>
-                </div>
-              </div>
+              <img src="assets/niha_cover.png" alt="Niha Enterprise Storefront Preview" class="portfolio-cover-img" loading="lazy" />
             </div>
             <div class="card-details">
               <div class="tags-row">
@@ -273,12 +339,7 @@
               </a>
             </div>
             <div class="card-visual">
-              <div class="visual-mockup bg-bathur">
-                <div class="mockup-content">
-                  <div class="mock-title">BATHURCHOICE</div>
-                  <div class="mock-desc">Luxury Home & Architectural Commerce</div>
-                </div>
-              </div>
+              <img src="assets/bathur_cover.png" alt="Bathurchoice Architectural Platform Preview" class="portfolio-cover-img" loading="lazy" />
             </div>
             <div class="card-details">
               <div class="tags-row">
@@ -307,12 +368,7 @@
               </a>
             </div>
             <div class="card-visual">
-              <div class="visual-mockup bg-goldenkey">
-                <div class="mockup-content">
-                  <div class="mock-title">GOLDENKEY</div>
-                  <div class="mock-desc">Real Estate SaaS & Property Ecosystem</div>
-                </div>
-              </div>
+              <img src="assets/goldenkey_cover.png" alt="Goldenkey Real Estate Ecosystem Preview" class="portfolio-cover-img" loading="lazy" />
             </div>
             <div class="card-details">
               <div class="tags-row">
@@ -341,12 +397,7 @@
               </a>
             </div>
             <div class="card-visual">
-              <div class="visual-mockup bg-garage">
-                <div class="mockup-content">
-                  <div class="mock-title">GARAGE91</div>
-                  <div class="mock-desc">Performance Automotive Configurator</div>
-                </div>
-              </div>
+              <img src="assets/garage91_cover.png" alt="Garage91 Automotive Commerce Preview" class="portfolio-cover-img" loading="lazy" />
             </div>
             <div class="card-details">
               <div class="tags-row">
@@ -375,12 +426,7 @@
               </a>
             </div>
             <div class="card-visual">
-              <div class="visual-mockup bg-troove">
-                <div class="mockup-content">
-                  <div class="mock-title">TROOVE</div>
-                  <div class="mock-desc">Direct-to-Consumer Beauty Brand</div>
-                </div>
-              </div>
+              <img src="assets/troove_cover.png" alt="Troove Subscription Platform Preview" class="portfolio-cover-img" loading="lazy" />
             </div>
             <div class="card-details">
               <div class="tags-row">
@@ -409,12 +455,7 @@
               </a>
             </div>
             <div class="card-visual">
-              <div class="visual-mockup bg-420">
-                <div class="mockup-content">
-                  <div class="mock-title">420STORE</div>
-                  <div class="mock-desc">High-Velocity Streetwear Storefront</div>
-                </div>
-              </div>
+              <img src="assets/420store_cover.png" alt="420Store Streetwear E-Commerce Preview" class="portfolio-cover-img" loading="lazy" />
             </div>
             <div class="card-details">
               <div class="tags-row">
@@ -453,7 +494,7 @@
         <div class="bento-grid">
           
           <!-- Bento Pillar 1 (Wide Span 2) -->
-          <div class="bento-card bento-span-2" data-tilt data-reveal>
+          <div class="bento-card bento-span-2" data-reveal>
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
             </div>
@@ -481,7 +522,7 @@
           </div>
 
           <!-- Bento Pillar 2 -->
-          <div class="bento-card" data-tilt data-reveal data-reveal-delay="100">
+          <div class="bento-card" data-reveal data-reveal-delay="100">
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
             </div>
@@ -501,7 +542,7 @@
           </div>
 
           <!-- Bento Pillar 3 -->
-          <div class="bento-card" data-tilt data-reveal>
+          <div class="bento-card" data-reveal>
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
             </div>
@@ -521,7 +562,7 @@
           </div>
 
           <!-- Bento Pillar 4 (Wide Span 2) -->
-          <div class="bento-card bento-span-2" data-tilt data-reveal data-reveal-delay="100">
+          <div class="bento-card bento-span-2" data-reveal data-reveal-delay="100">
             <div class="bento-icon-wrapper">
               <svg class="bento-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
             </div>
@@ -572,7 +613,7 @@
         <div class="pricing-grid">
           
           <!-- Tier 1: Starter Support -->
-          <div class="pricing-card" data-tilt data-reveal>
+          <div class="pricing-card" data-reveal>
             <div class="pricing-header">
               <div class="plan-badge">STARTER</div>
               <h3 class="plan-name">Starter Support</h3>
@@ -611,7 +652,7 @@
           </div>
 
           <!-- Tier 2: Business Growth (HIGHLIGHTED CARD) -->
-          <div class="pricing-card card-featured" data-tilt data-reveal data-reveal-delay="100">
+          <div class="pricing-card card-featured" data-reveal data-reveal-delay="100">
             <div class="featured-glow-border"></div>
             <div class="popular-ribbon">
               <svg class="icon-xs" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"></path></svg>
@@ -663,7 +704,7 @@
           </div>
 
           <!-- Tier 3: Enterprise Prime -->
-          <div class="pricing-card" data-tilt data-reveal data-reveal-delay="200">
+          <div class="pricing-card" data-reveal data-reveal-delay="200">
             <div class="pricing-header">
               <div class="plan-badge">ENTERPRISE</div>
               <h3 class="plan-name">Enterprise Prime</h3>
@@ -729,7 +770,7 @@
         <div class="testimonials-grid">
           
           <!-- Card 1 -->
-          <div class="testimonial-card" data-tilt data-reveal>
+          <div class="testimonial-card" data-reveal>
             <div class="rating-stars">
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -752,7 +793,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="testimonial-card" data-tilt data-reveal data-reveal-delay="100">
+          <div class="testimonial-card" data-reveal data-reveal-delay="100">
             <div class="rating-stars">
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -775,7 +816,7 @@
           </div>
 
           <!-- Card 3 -->
-          <div class="testimonial-card" data-tilt data-reveal data-reveal-delay="200">
+          <div class="testimonial-card" data-reveal data-reveal-delay="200">
             <div class="rating-stars">
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

@@ -1,9 +1,9 @@
 /**
  * TEXNOID — BESPOKE AGENCY INTERACTION ENGINE
- * Mobile Navigation Drawer, Accessibility (Focus Management), 3D Tilt Physics, & Viewport Engine
+ * Bulletproof Mobile Navigation Drawer, Scoped 3D Tilt Physics (Selected Works Only), & Viewport Engine
  */
 
-// Global Mobile Navigation Functions with Focus Management (Avoids aria-hidden console warnings)
+// Top-Level Global Mobile Navigation Functions with Focus Management
 window.openMobileDrawer = function() {
   const drawer = document.getElementById('mobileDrawer');
   const btn = document.getElementById('mobileMenuBtn');
@@ -23,7 +23,7 @@ window.closeMobileDrawer = function() {
   const btn = document.getElementById('mobileMenuBtn');
   if (!drawer) return;
 
-  // Crucial Accessibility Fix: Blur focus from drawer elements BEFORE setting inert/hiding
+  // Accessibility Fix: Blur focus from drawer elements BEFORE setting inert
   if (document.activeElement && drawer.contains(document.activeElement)) {
     document.activeElement.blur();
   }
@@ -53,7 +53,7 @@ function initApp() {
   // Mark JS as loaded for animation observers
   document.documentElement.classList.add('js-loaded');
 
-  // 1. Safe Lucide Icons Initialization with Fallback
+  // 1. Safe Lucide Icons Initialization
   try {
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
       lucide.createIcons();
@@ -62,29 +62,35 @@ function initApp() {
     console.warn('Lucide icons fallback active:', err);
   }
 
-  // 2. Attach Mobile Drawer Event Listeners
+  // 2. Attach Mobile Drawer Event Listeners with Touch Support
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const drawerCloseBtn = document.getElementById('drawerCloseBtn');
   const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
 
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', (e) => {
+  function bindTouchAndClick(element, handler) {
+    if (!element) return;
+    let touchHandled = false;
+
+    element.addEventListener('touchend', (e) => {
+      touchHandled = true;
       e.preventDefault();
-      window.toggleMobileDrawer();
+      handler(e);
+      setTimeout(() => { touchHandled = false; }, 400);
+    }, { passive: false });
+
+    element.addEventListener('click', (e) => {
+      if (!touchHandled) {
+        e.preventDefault();
+        handler(e);
+      }
     });
   }
 
-  if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.closeMobileDrawer();
-    });
-  }
+  bindTouchAndClick(mobileMenuBtn, () => window.toggleMobileDrawer());
+  bindTouchAndClick(drawerCloseBtn, () => window.closeMobileDrawer());
 
   drawerLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      window.closeMobileDrawer();
-    });
+    bindTouchAndClick(link, () => window.closeMobileDrawer());
   });
 
   document.addEventListener('keydown', (e) => {
@@ -129,17 +135,17 @@ function initApp() {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
-  // Guarantee all reveal elements become visible after 350ms
+  // Guarantee reveal fallback after 350ms
   setTimeout(() => {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }, 350);
 
-  // 5. Enhanced 3D Tilt Physics Engine
-  const tiltElements = document.querySelectorAll('[data-tilt]');
+  // 5. Enhanced 3D Tilt Physics Engine — SCOPED EXCLUSIVELY TO SELECTED WORKS PORTFOLIO CARDS
+  const portfolioTiltCards = document.querySelectorAll('.portfolio-card[data-tilt]');
 
-  tiltElements.forEach(card => {
-    const maxTilt = 12;
-    const shine = card.querySelector('.card-shine, .card-glass-shine');
+  portfolioTiltCards.forEach(card => {
+    const maxTilt = 10;
+    const shine = card.querySelector('.card-shine');
 
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
