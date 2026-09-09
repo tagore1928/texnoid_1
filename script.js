@@ -1,9 +1,17 @@
 /**
  * TEXNOID — BESPOKE AGENCY INTERACTION ENGINE
- * Bulletproof Mobile Navigation Drawer, Scoped 3D Tilt Physics (Selected Works Only), & Viewport Engine
+ * Theme Engine (Light Default / Dark Mode), Mobile Navigation Drawer, & Viewport Scroll Reveal
  */
 
-// Top-Level Global Mobile Navigation Functions with Focus Management
+// Theme Engine Switcher
+window.toggleTheme = function() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const newTheme = isDark ? 'light' : 'dark';
+  document.documentElement.className = newTheme;
+  localStorage.setItem('texnoid_theme', newTheme);
+};
+
+// Global Mobile Navigation Functions
 window.openMobileDrawer = function() {
   const drawer = document.getElementById('mobileDrawer');
   const btn = document.getElementById('mobileMenuBtn');
@@ -23,7 +31,6 @@ window.closeMobileDrawer = function() {
   const btn = document.getElementById('mobileMenuBtn');
   if (!drawer) return;
 
-  // Accessibility Fix: Blur focus from drawer elements BEFORE setting inert
   if (document.activeElement && drawer.contains(document.activeElement)) {
     document.activeElement.blur();
   }
@@ -50,7 +57,7 @@ window.toggleMobileDrawer = function() {
 };
 
 function initApp() {
-  // Mark JS as loaded for animation observers
+  // Mark JS loaded
   document.documentElement.classList.add('js-loaded');
 
   // 1. Safe Lucide Icons Initialization
@@ -59,7 +66,7 @@ function initApp() {
       lucide.createIcons();
     }
   } catch (err) {
-    console.warn('Lucide icons fallback active:', err);
+    console.warn('Lucide icons fallback:', err);
   }
 
   // 2. Attach Mobile Drawer Event Listeners with Touch Support
@@ -135,53 +142,11 @@ function initApp() {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
-  // Guarantee reveal fallback after 350ms
   setTimeout(() => {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }, 350);
 
-  // 5. Enhanced 3D Tilt Physics Engine — SCOPED EXCLUSIVELY TO SELECTED WORKS PORTFOLIO CARDS
-  const portfolioTiltCards = document.querySelectorAll('.portfolio-card[data-tilt]');
-
-  portfolioTiltCards.forEach(card => {
-    const maxTilt = 10;
-    const shine = card.querySelector('.card-shine');
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = -((y - centerY) / centerY) * maxTilt;
-      const rotateY = ((x - centerX) / centerX) * maxTilt;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
-      card.style.transition = 'none';
-
-      if (shine) {
-        const shineX = (x / rect.width) * 100;
-        const shineY = (y / rect.height) * 100;
-        shine.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255, 255, 255, 0.22) 0%, transparent 65%)`;
-      }
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      card.style.transition = 'transform 0.4s ease-out';
-      if (shine) {
-        shine.style.background = '';
-      }
-    });
-
-    card.addEventListener('mouseenter', () => {
-      card.style.transition = 'none';
-    });
-  });
-
-  // 6. Dynamic Copyright Year
+  // 5. Dynamic Copyright Year
   const yearElement = document.getElementById('copyrightYear');
   if (yearElement) {
     yearElement.innerText = new Date().getFullYear();
