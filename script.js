@@ -1,6 +1,7 @@
 /**
  * TEXNOID — BESPOKE AGENCY INTERACTION ENGINE
- * Theme Engine (Light Default / Dark Mode), Mobile Navigation Drawer, & Viewport Scroll Reveal
+ * Theme Engine (Light Default / Dark Mode), Mobile Navigation Drawer, Viewport Scroll Reveal,
+ * 4-Phase Interactive Timeline Progress Beam & Radial Mouse Spotlight Glow
  */
 
 // Theme Engine Switcher
@@ -146,7 +147,47 @@ function initApp() {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }, 350);
 
-  // 5. Dynamic Copyright Year
+  // 5. Interactive 4-Phase Vertical Timeline Beam
+  const timelineTrack = document.querySelector('.timeline-track');
+  const progressBeam = document.getElementById('timelineProgressBeam');
+
+  if (timelineTrack && progressBeam) {
+    const updateTimelineBeam = () => {
+      const trackRect = timelineTrack.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      const startPoint = windowHeight * 0.45;
+      const trackTop = trackRect.top;
+      const trackHeight = trackRect.height;
+      
+      if (trackTop > startPoint) {
+        progressBeam.style.height = '0%';
+      } else {
+        const scrolledDistance = startPoint - trackTop;
+        const progressRatio = Math.min(1, Math.max(0, scrolledDistance / trackHeight));
+        progressBeam.style.height = `${(progressRatio * 100).toFixed(1)}%`;
+      }
+    };
+
+    window.addEventListener('scroll', updateTimelineBeam, { passive: true });
+    window.addEventListener('resize', updateTimelineBeam, { passive: true });
+    updateTimelineBeam();
+  }
+
+  // 6. Mouse Coordinate Radial Spotlight Glow on Phase Containers
+  const phaseCards = document.querySelectorAll('.phase-card');
+
+  phaseCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // 7. Dynamic Copyright Year
   const yearElement = document.getElementById('copyrightYear');
   if (yearElement) {
     yearElement.innerText = new Date().getFullYear();
