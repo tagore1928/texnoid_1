@@ -46,7 +46,13 @@ window.closeMobileDrawer = function() {
   }
 };
 
+let lastToggleTimestamp = 0;
+
 window.toggleMobileDrawer = function() {
+  const now = Date.now();
+  if (now - lastToggleTimestamp < 300) return;
+  lastToggleTimestamp = now;
+
   const drawer = document.getElementById('mobileDrawer');
   if (!drawer) return;
 

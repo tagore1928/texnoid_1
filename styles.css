@@ -489,6 +489,11 @@ html.dark .site-header.scrolled {
   z-index: 1001;
 }
 
+.mobile-toggle svg,
+.drawer-close-btn svg {
+  pointer-events: none;
+}
+
 html.dark .mobile-toggle {
   background: rgba(255, 255, 255, 0.08);
 }

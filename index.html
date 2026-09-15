@@ -62,7 +62,12 @@
       }
     };
 
+    var lastToggleTimestamp = 0;
     window.toggleMobileDrawer = function() {
+      var now = Date.now();
+      if (now - lastToggleTimestamp < 300) return;
+      lastToggleTimestamp = now;
+
       var drawer = document.getElementById('mobileDrawer');
       if (!drawer) return;
       if (drawer.classList.contains('active')) {
