@@ -22,9 +22,6 @@ window.openMobileDrawer = function() {
   drawer.classList.add('active');
   if (btn) btn.setAttribute('aria-expanded', 'true');
   document.body.classList.add('drawer-open');
-
-  const closeBtn = document.getElementById('drawerCloseBtn');
-  if (closeBtn) closeBtn.focus();
 };
 
 window.closeMobileDrawer = function() {
@@ -42,7 +39,6 @@ window.closeMobileDrawer = function() {
 
   if (btn) {
     btn.setAttribute('aria-expanded', 'false');
-    btn.focus();
   }
 };
 
@@ -76,29 +72,39 @@ function initApp() {
     console.warn('Lucide icons fallback:', err);
   }
 
-  // 2. Attach Mobile Drawer Event Listeners
+  // 2. Attach Bulletproof Mobile Drawer Event Listeners
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const drawerCloseBtn = document.getElementById('drawerCloseBtn');
   const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
 
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', (e) => {
+  function bindNavButton(element, action) {
+    if (!element) return;
+    let handledByTouch = false;
+
+    element.addEventListener('touchend', (e) => {
+      handledByTouch = true;
       e.preventDefault();
       e.stopPropagation();
-      window.toggleMobileDrawer();
+      action();
+      setTimeout(() => { handledByTouch = false; }, 400);
+    }, { passive: false });
+
+    element.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!handledByTouch) {
+        action();
+      }
     });
   }
 
-  if (drawerCloseBtn) {
-    drawerCloseBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.closeMobileDrawer();
-    });
-  }
+  bindNavButton(mobileMenuBtn, () => window.toggleMobileDrawer());
+  bindNavButton(drawerCloseBtn, () => window.closeMobileDrawer());
 
   drawerLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    let linkTouchHandled = false;
+
+    const navigateLink = (e) => {
       const href = link.getAttribute('href');
       window.closeMobileDrawer();
 
@@ -114,14 +120,28 @@ function initApp() {
           const targetId = href.substring(href.indexOf('#') + 1);
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
-            e.preventDefault();
+            if (e && e.cancelable) e.preventDefault();
             setTimeout(() => {
               targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 150);
           }
+        } else {
+          if (e && e.type === 'touchend') {
+            window.location.href = href;
+          }
         }
-        // Note: For page switching (e.g., index.html -> process.html or process.html -> index.html),
-        // we allow default browser link navigation without calling e.preventDefault().
+      }
+    };
+
+    link.addEventListener('touchend', (e) => {
+      linkTouchHandled = true;
+      navigateLink(e);
+      setTimeout(() => { linkTouchHandled = false; }, 400);
+    }, { passive: true });
+
+    link.addEventListener('click', (e) => {
+      if (!linkTouchHandled) {
+        navigateLink(e);
       }
     });
   });
