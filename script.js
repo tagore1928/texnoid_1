@@ -70,35 +70,54 @@ function initApp() {
     console.warn('Lucide icons fallback:', err);
   }
 
-  // 2. Attach Mobile Drawer Event Listeners with Touch Support
+  // 2. Attach Mobile Drawer Event Listeners
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const drawerCloseBtn = document.getElementById('drawerCloseBtn');
   const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-actions a');
 
-  function bindTouchAndClick(element, handler) {
-    if (!element) return;
-    let touchHandled = false;
-
-    element.addEventListener('touchend', (e) => {
-      touchHandled = true;
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      handler(e);
-      setTimeout(() => { touchHandled = false; }, 400);
-    }, { passive: false });
-
-    element.addEventListener('click', (e) => {
-      if (!touchHandled) {
-        e.preventDefault();
-        handler(e);
-      }
+      e.stopPropagation();
+      window.toggleMobileDrawer();
     });
   }
 
-  bindTouchAndClick(mobileMenuBtn, () => window.toggleMobileDrawer());
-  bindTouchAndClick(drawerCloseBtn, () => window.closeMobileDrawer());
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.closeMobileDrawer();
+    });
+  }
 
   drawerLinks.forEach(link => {
-    bindTouchAndClick(link, () => window.closeMobileDrawer());
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      window.closeMobileDrawer();
+
+      if (href) {
+        const currentPath = window.location.pathname;
+        const pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+
+        const isAnchorOnSamePage = href.startsWith('#') ||
+          ((pageName === 'index.html' || pageName === '') && href.startsWith('index.html#')) ||
+          (pageName === 'process.html' && href.startsWith('process.html#'));
+
+        if (isAnchorOnSamePage && href.includes('#')) {
+          const targetId = href.substring(href.indexOf('#') + 1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            setTimeout(() => {
+              targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+          }
+        }
+        // Note: For page switching (e.g., index.html -> process.html or process.html -> index.html),
+        // we allow default browser link navigation without calling e.preventDefault().
+      }
+    });
   });
 
   document.addEventListener('keydown', (e) => {
