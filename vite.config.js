@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         process: resolve(__dirname, 'process.html'),
+        portfolio: resolve(__dirname, 'portfolio.html'),
       },
     },
   },

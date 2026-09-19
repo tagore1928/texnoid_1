@@ -1025,10 +1025,25 @@ html.dark .chrome-dots span {
   border-radius: 5px;
 }
 
+.card-visual-link {
+  display: block;
+  text-decoration: none;
+}
+
 .card-project-title {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.4rem;
+}
+
+.card-project-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.card-project-title a:hover {
+  color: var(--accent-crimson);
 }
 
 .card-project-desc {
@@ -1786,23 +1801,26 @@ html.js-loaded [data-reveal].is-visible {
   padding-left: 0.75rem;
 }
 
-.process-hero-section {
+.process-hero-section,
+.portfolio-hero-section {
   padding-top: calc(var(--nav-height) + 4rem);
   padding-bottom: 3.5rem;
   text-align: center;
 }
 
-.process-hero-content {
+.process-hero-content,
+.portfolio-hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
-.process-hero-content .hero-cta-group {
+.process-hero-content .hero-cta-group,
+.portfolio-hero-content .hero-cta-group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1813,17 +1831,20 @@ html.js-loaded [data-reveal].is-visible {
   text-align: center;
 }
 
-.process-hero-title {
+.process-hero-title,
+.portfolio-hero-title {
   font-size: clamp(2.4rem, 5vw, 4.2rem);
   line-height: 1.1;
   margin-bottom: 1.25rem;
+  font-weight: 800;
 }
 
-.process-hero-subtitle {
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+.process-hero-subtitle,
+.portfolio-hero-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   color: var(--text-secondary);
-  max-width: 680px;
-  margin-bottom: 2rem;
+  max-width: 720px;
+  margin: 0 auto 2rem auto;
   line-height: 1.65;
 }
 
